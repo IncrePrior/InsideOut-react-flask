@@ -39,20 +39,20 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
-					Email
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
 					Username
 					<input
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Email
+					<input
+						type="text"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
 				</label>
