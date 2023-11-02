@@ -4,7 +4,8 @@ COPY /react-app /react-app
 
 WORKDIR /react-app
 
-RUN npm install && CI=false && npm run build
+# RUN npm install && CI=false && npm run build
+RUN npm install && CI=false npm run build
 
 FROM python:3.9.18-alpine3.18
 
