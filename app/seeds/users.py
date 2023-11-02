@@ -1,20 +1,77 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
+from datetime import datetime
+
+current_date = datetime.now()
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+# def seed_users():
+#     demo_user = User.query.filter_by(username='Demo').first()
+#     if demo_user is None:
+#         users = [
+#         User(
+#         username='Demo',
+#         email='demo@aa.io',
+#         password='password',
+#         created_at=current_date,
+#         updated_at=current_date,
+#         ),
+#         User(
+#         username='magda',
+#         email='magda@gmail.com',
+#         password='password',
+#         created_at=current_date,
+#         updated_at=current_date,
+#         ),
+#         User(
+#         username='george',
+#         email='george@gmail.com',
+#         password='password',
+#         created_at=current_date,
+#         updated_at=current_date,
+#         )
+#     ]
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.commit()
+#     db.session.add_all(users)
+#     db.session.commit()
+#     return users
+
+def seed_users():
+    users = []  # Initialize an empty list
+    demo_user = User.query.filter_by(username='Demo').first()
+    if demo_user is None:
+        users = [
+            User(
+                username='Demo',
+                email='demo@aa.io',
+                password='password',
+                created_at=current_date,
+                updated_at=current_date,
+            ),
+            User(
+                username='magda',
+                email='magda@gmail.com',
+                password='password',
+                created_at=current_date,
+                updated_at=current_date,
+            ),
+            User(
+                username='george',
+                email='george@gmail.com',
+                password='password',
+                created_at=current_date,
+                updated_at=current_date,
+            )
+        ]
+
+        db.session.add_all(users)
+        db.session.commit()
+    else:
+        print("User 'Demo' already exists in the database.")
+
+    return users  
+
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -28,5 +85,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()

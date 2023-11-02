@@ -12,13 +12,13 @@ class PostCollection(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')))
-    collection_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('collections.id')))
+    collection_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('collections.id')), nullable=False)
 
+    # posts = db.relationship('Post', back_populates='posts_collections')
+    # collections = db.relationship('Collection', back_populates='posts_collections')
 
-    posts = db.relationship('Post', back_populates='posts_collections')
-    collections = db.relationship('Collection', back_populates='posts_collections')
-
-
+    posts = db.relationship('Post', back_populates='posts_collections', viewonly=True, overlaps="collections")
+    collections = db.relationship('Collection', back_populates='posts_collections', viewonly=True, overlaps="posts")
 
 
 
