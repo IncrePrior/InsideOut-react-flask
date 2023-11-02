@@ -91,7 +91,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
     if environment == "production":
-        op.execute(f"ALTER TABLE post_collection SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE posts_collections SET SCHEMA {SCHEMA};")
     if environment == "production":
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
 
