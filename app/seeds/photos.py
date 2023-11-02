@@ -202,6 +202,10 @@ def seed_photos():
     Photo(
         photo_url="https://insideout-nov2023.s3.amazonaws.com/interior-desing-pics/new-pics/49.png",
     ),
+    # 50
+    Photo(
+        photo_url="https://insideout-nov2023.s3.amazonaws.com/interior-desing-pics/new-pics/50.png",
+    ),
     # 51
     Photo(
         photo_url="https://insideout-nov2023.s3.amazonaws.com/interior-desing-pics/new-pics/51.png",
