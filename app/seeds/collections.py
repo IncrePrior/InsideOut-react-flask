@@ -66,7 +66,7 @@ def seed_collections(posts):
 
 def undo_collections():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.boards RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.collections RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM collections"))
 
