@@ -21,7 +21,7 @@ class Collection(db.Model):
 
     user = db.relationship('User', back_populates='collections')
     posts = db.relationship('Post', secondary=add_prefix_for_prod('posts_collections'), back_populates='collections')
-    posts_collections = db.relationship('PostCollection', back_populates='collections', cascade='all, delete-orphan')
+    posts_collections = db.relationship('PostCollection', back_populates='collections', viewonly=True)
 
 
 
