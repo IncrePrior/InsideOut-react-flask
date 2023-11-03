@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 
@@ -9,6 +10,7 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
@@ -17,6 +19,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
+        history.push('/posts')
         closeModal()
     }
   };
