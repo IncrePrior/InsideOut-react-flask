@@ -5,3 +5,143 @@
 .hidden {
   display: none;
 }
+
+.nav-container {
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px 18px 25px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.INSIDEOUT-logo {
+  /* width: 160px; */
+  height: 35px;
+  margin-left: 30px;
+  padding-top: 0;
+  object-fit: contain;
+}
+
+.nav-profile {
+  display: flex;
+  align-items: center;
+  margin-right: 60px;
+}
+
+.new-post {
+  text-decoration: none;
+  color: black;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  right: 110px;
+  top: 30px;
+  padding: 7px 12px;
+}
+
+.new-post:hover {
+  color: aqua;
+}
+
+.profile-button {
+  background-color: white;
+  border: white;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.fa-user-circle {
+  margin-top: 2px;
+  font-size: 28px;
+  color: black;
+}
+
+/* .horizontal-line1 {
+  color: gray;
+} */
+
+.fa-user-circle:hover {
+  color: aqua;
+}
+
+.logout-button {
+  border: rgb(30, 206, 206);
+  background-color: rgb(30, 206, 206);
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 8px 15px;
+  width: 100%;
+  height: 30px;
+  color: white;
+  /* margin-right: auto; */
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  background-color: aqua;
+}
+
+
+.email {
+  margin-top: 0;
+  margin-bottom:5px;
+  padding-bottom: 0;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+
+.text {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
+  padding-bottom: 0;
+}
+
+.logout-dropdown {
+  position: absolute;
+  background-color: transparent;
+  border: 2px black;
+  /* box-shadow: 1px 1px 22px rgb(183, 182, 182); */
+  padding: 10px;
+  padding-left: 20px;
+  width: 80px;
+  max-width: 180px;
+  top: 10px;
+  /* right: 0; */
+  border-radius: 7px;
+  padding: 0;
+  z-index: 50;
+}
+
+.profile-small-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.menu-text {
+  /* border: 2px solid red; */
+  border: none;
+  border: rgb(30, 206, 206);
+  background-color: rgb(30, 206, 206);
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  color: white;
+}
+
+.menu-text:hover {
+  cursor: pointer;
+  background-color: aqua;
+}
