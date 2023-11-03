@@ -5,8 +5,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+
 
 
 function ProfileButton({ user }) {
