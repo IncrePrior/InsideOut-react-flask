@@ -9,4 +9,4 @@ class PostForm(FlaskForm):
     title = StringField('title', validators=[DataRequired()])
     text = TextAreaField('description', validators=[DataRequired()])
     photo = FileField('upload a photo', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    # user_id = IntegerField('user_id', validators=[DataRequired()])
+  
