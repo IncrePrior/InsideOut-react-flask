@@ -17,15 +17,6 @@ def get_posts():
     posts = Post.query.all()
     return jsonify([post.to_dict() for post in posts])
 
-    # all_posts = Post.query.all()
-    # all_posts_dict = {}
-
-    # for post in all_posts:
-    #     data = post.to_dict()
-    #     all_posts_dict[str(post.id)] = data
-
-    # return jsonify(all_posts_dict), 200
-
 
 
 
@@ -36,7 +27,6 @@ def getOnePost(postId):
     View one post by id.
     """
     post = Post.query.get(postId)
-    # return post.to_dict()
 
     if not post:
         return {'errors' : {'Post' : 'Post not found'}}, 404

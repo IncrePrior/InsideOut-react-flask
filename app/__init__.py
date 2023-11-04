@@ -13,7 +13,7 @@ from .config import Config
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
-# Setup login manager
+
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
@@ -23,7 +23,6 @@ def load_user(id):
     return User.query.get(int(id))
 
 
-# Tell flask about our seed commands
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
