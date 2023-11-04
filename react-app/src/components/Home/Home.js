@@ -1,14 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import PostCard from "./PostCard";
-// import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
-import './Home.css';
-
+import SinglePost from "./SinglePost";
+import { getAllPostsThunk } from "../../store/post";
+import Masonry from "react-masonry-css";
+import "./Home.css";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const postsObj = useSelector((state) => state.posts.allPosts);
+  const posts = postsObj ? Object.values(postsObj) : [];
 
-    return (
-        <p>this is all posts page</p>
-    )
+  useEffect(() => {
+    dispatch(getAllPostsThunk());
+  }, [dispatch]);
 
+  if (!posts.length) {
+    console.log("No posts to display.");
+    return null;
+  }
+
+  return (
+    <div className="image-grid">
+      <Masonry
+        breakpointCols={{ default: 4, 1100: 3, 800: 2, 500: 1 }}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {posts.map((post) => (
+          <SinglePost key={post.id} post={post} />
+        ))}
+      </Masonry>
+    </div>
+  );
 }
