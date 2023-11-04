@@ -1,1 +1,13 @@
-/* TODO Add site wide styles */
+#root {
+    font-family: 'Josefin Sans', sans-serif;
+    /* width: 1024px; */
+    /* margin: 0 auto; */
+}
+
+/* #modal-content {
+    border-radius: 15px;
+}
+
+button {
+    cursor: pointer;
+} */

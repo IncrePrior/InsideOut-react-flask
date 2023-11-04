@@ -1,0 +1,58 @@
+/* Home.css */
+.image-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0; /* Change to your desired background color */
+  }
+
+  /* Define your Masonry grid styles here */
+  .Masonry {
+    display: flex;
+    width: 100%; /* Adjust to your layout */
+    margin: 0 auto;
+  }
+
+  /* Define styles for each individual post within the Masonry grid */
+  .SinglePost {
+    margin: 8px; /* Adjust spacing between posts */
+    border-radius: 8px; /* Add rounded corners to each post */
+    background-color: #fff; /* Background color for each post */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    overflow: hidden; /* Hide overflowing content */
+    transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+  }
+
+  .SinglePost:hover {
+    transform: scale(1.05); /* Enlarge the post on hover */
+  }
+
+  /* Define styles for the contents within each post */
+  .post-container {
+    padding: 10px; /* Add padding within each post */
+  }
+
+  .post {
+    /* Define styles for the post content (e.g., image, title, etc.) */
+  }
+
+  .post-photo {
+    width: 100%; /* Ensure the image takes the full width of the post */
+    max-height: 100%; /* Adjust max height if needed */
+  }
+
+  /* Add responsive styling for different screen sizes if necessary */
+  @media screen and (max-width: 768px) {
+    .image-grid {
+      padding: 10px;
+    }
+
+    .Masonry {
+      flex-direction: column;
+    }
+
+    .SinglePost {
+      width: 100%; /* Posts take full width on smaller screens */
+    }
+  }

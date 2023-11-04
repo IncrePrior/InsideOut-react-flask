@@ -19,7 +19,8 @@ class Post(db.Model):
     user = db.relationship('User', back_populates='posts')
     photo = db.relationship('Photo', back_populates='posts')
     collections = db.relationship('Collection', secondary=add_prefix_for_prod('posts_collections'), back_populates='posts')
-    posts_collections = db.relationship('PostCollection', back_populates='posts', viewonly=True)
+    # posts_collections = db.relationship('PostCollection', back_populates='posts', viewonly=True)
+    posts_collections = db.relationship('PostCollection', back_populates='posts')
     comments = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')
 
 

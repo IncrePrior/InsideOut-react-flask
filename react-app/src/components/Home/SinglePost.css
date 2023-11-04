@@ -1,0 +1,135 @@
+.post {
+    position: relative;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+.post-container {
+    border: 2px solid red;
+}
+
+.post-photo {
+    max-width: 100%;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: -20;
+}
+
+.post-hover button {
+    all: unset;
+    padding: 10px 20px;
+    background-color: #ff4057;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: -10;
+}
+
+.post-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 8px;
+}
+
+.post:hover {
+    transform: scale(1.05);
+}
+
+.post:hover .post-hover {
+    opacity: 1;
+}
+
+.top-left {
+    align-self: flex-start;
+    margin-bottom: auto;
+    margin-left: -40px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.bottom-left {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-left: -160px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+
+
+
+
+
+/* .post {
+    position: relative;
+    margin: 10px;
+    transition: transform 0.3s;
+
+
+}
+
+.post-photo {
+    max-width: 100%;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: -20;
+}
+
+.post-hover button {
+    all: unset;
+    padding: 10px 20px;
+    background-color: #ff4057;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: -10;
+}
+
+.post-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 8px;
+}
+
+.post:hover {
+    transform: scale(1.05);
+}
+
+.post:hover .post-hover {
+    opacity: 1;
+}
+
+.top-left {
+    align-self: flex-start;
+    margin-bottom: auto;
+    margin-left: -40px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.bottom-left {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-left: -160px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+} */

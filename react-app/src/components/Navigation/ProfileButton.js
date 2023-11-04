@@ -20,6 +20,7 @@ function ProfileButton({ user }) {
   };
 
   useEffect(() => {
+
     if (!showMenu) return;
 
     const closeMenu = (e) => {
@@ -40,7 +41,7 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
+  // const closeMenu = () => setShowMenu(false);
 
   return (
     <div>
@@ -56,7 +57,6 @@ function ProfileButton({ user }) {
               Hi <strong>{user.username}</strong>
             </p>
             <p className="email"> {user.email}</p>
-            <div className="line"></div>
             <button className="logout-button" onClick={handleLogout}>
               Log Out
             </button>
@@ -66,14 +66,16 @@ function ProfileButton({ user }) {
           <div className="profile-small-button">
             <OpenModalButton
               buttonText={<> LOG IN </>}
-              onItemClick={closeMenu}
+              onItemClick={() => setShowMenu(false)}
+              // onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
           </div>
           <div className="profile-small-button">
             <OpenModalButton
               buttonText={<> SIGN UP </>}
-              onItemClick={closeMenu}
+              onItemClick={() => setShowMenu(false)}
+              // onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
             </div>
