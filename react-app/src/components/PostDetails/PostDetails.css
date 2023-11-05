@@ -1,22 +1,17 @@
 .post-photo-container {
-  /* border: 2px solid green; */
   margin: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  height: 550px;
-  background-color: rgb(222, 218, 218);
-  /* border-bottom: 1px solid gray; */
-  border-top: 1px solid rgrgb(241, 237, 237);
+  justify-content: center;
+  height: 530px;
+  /* background-color: rgb(222, 218, 218); */
+  background-color: rgb(60, 59, 59);
   box-shadow: 0px 4px 10px rgb(188, 185, 185);
 }
 
 .current-post-image {
-  margin-top: 25px;
-  border: 2px solid blue;
-  width: auto;
-  height: 470px;
-  /* height: 44px; */
+  height: 530px;
 }
 
 .post-info-container {
@@ -32,7 +27,7 @@
 }
 
 .owner-info {
-      /* border: 2px solid green; */
+  /* border: 2px solid green; */
   width: 100px;
   min-height: 100px;
   display: flex;
@@ -42,16 +37,15 @@
 }
 
 .post-owner-icon {
-    margin-top: 25px;
+  margin-top: 25px;
   padding-top: 20px;
   height: 70px;
 }
 
 .post-owner {
-font-weight: bold;
-font-size: 20px;
+  font-weight: bold;
+  font-size: 20px;
 }
-
 
 .text-area {
   display: flex;
@@ -89,42 +83,40 @@ font-size: 20px;
 }
 
 .comments-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
 }
-
 
 .post-comment {
-border-bottom: 1.5px solid rgb(218, 214, 214);
-padding-bottom: 10px;
+  border-bottom: 1.5px solid rgb(218, 214, 214);
+  padding-bottom: 10px;
 }
 
-/* .post-previous {
-  position: absolute;
-  font-size: 30px;
-  top: 37.5%;
-  left: -130px;
-  color: rgba(233, 233, 233, 0.898);
-}
 
-.post-next {
-  position: absolute;
-  font-size: 30px;
-  top: 37.5%;
-  right: -130px;
-  color: rgba(233, 233, 233, 0.898);
-}
+.arrow-icon-left {
+    font-size: 20px;
+    font-weight: 100;
+    top: 37.5%;
+    left: -130px;
+    color: rgba(147, 141, 141, 0.898);
+    z-index: 1000;
+    margin-right: 140px;
+  }
 
-.post-next:hover,
-.post-previous:hover {
-  cursor: pointer;
-}
+  .arrow-icon-right {
+    font-size: 20px;
+    font-weight: 100;
+    top: 37.5%;
+    right: -130px;
+    color: rgba(147, 141, 141, 0.898);
+    z-index: 1000;
+    margin-left: 140px;
+  }
 
-.post-return-home {
-  position: absolute;
-  left: -150px;
-  color: black;
-} */
+
+  .arrow-icon-right:hover,
+  .arrow-icon-left:hover {
+    cursor: pointer;
+  }

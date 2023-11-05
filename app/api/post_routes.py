@@ -37,6 +37,26 @@ def getOnePost(postId):
 
 
 
+@post_routes.route('/<int:postId>/photo', methods=['GET'])
+def get_post_photo(postId):
+    """
+    Get the photo URL for a specific post.
+    """
+    post = Post.query.get(postId)
+
+    if not post:
+        return {'errors': {'Post': 'Post not found'}}, 404
+
+    if not post.photo:
+        return {'errors': {'Photo': 'Photo URL not found for this post'}}, 404
+
+    photo_url = post.photo.photo_url
+
+    return jsonify({'photoUrl': photo_url}), 200
+
+
+
+
 @post_routes.route("/check/<int:postId>/previous", methods=["GET"])
 def check_prev_post(postId):
   """

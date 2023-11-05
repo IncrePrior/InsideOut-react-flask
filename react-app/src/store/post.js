@@ -3,7 +3,11 @@ export const GET_SINGLE_POST = "posts/GET_SINGLE_POST";
 export const CREATE_SINGLE_POST = "posts/CREATE_SINGLE_POST";
 export const DELETE_SINGLE_POST = "posts/DELETE_SINGLE_POST";
 
-//actions:
+export const FETCH_PHOTO_URL_REQUEST = 'posts/FETCH_PHOTO_URL_REQUEST';
+export const FETCH_PHOTO_URL_SUCCESS = 'posts/FETCH_PHOTO_URL_SUCCESS';
+export const FETCH_PHOTO_URL_FAILURE = 'posts/FETCH_PHOTO_URL_FAILURE';
+
+// Actions:
 
 const getAllPosts = (posts) => ({
   type: GET_ALL_POSTS,
@@ -25,9 +29,40 @@ const deleteSinglePost = (postId) => ({
   postId,
 });
 
+export const fetchPhotoUrlRequest = () => ({
+  type: FETCH_PHOTO_URL_REQUEST,
+});
+
+export const fetchPhotoUrlSuccess = (photoUrl) => ({
+  type: FETCH_PHOTO_URL_SUCCESS,
+  photoUrl,
+});
+
+export const fetchPhotoUrlFailure = (error) => ({
+  type: FETCH_PHOTO_URL_FAILURE,
+  error,
+});
+
+
 //___________________________________________________
 
 //thunks:
+
+
+export const fetchPhotoUrl = (postId) => async (dispatch) => {
+  dispatch(fetchPhotoUrlRequest());
+  try {
+    const response = await fetch(`/api/posts/${postId}/photo`);
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(fetchPhotoUrlSuccess(data.photoUrl));
+    } else {
+      throw new Error('Failed to fetch photo URL');
+    }
+  } catch (error) {
+    dispatch(fetchPhotoUrlFailure(error.message));
+  }
+};
 
 export const getAllPostsThunk = () => async (dispatch) => {
   const res = await fetch("/api/posts");
@@ -36,7 +71,6 @@ export const getAllPostsThunk = () => async (dispatch) => {
   if (res.ok) {
     const posts = await res.json();
 
-    // console.log('Fetched posts:', posts);
 
     dispatch(getAllPosts(posts));
     return posts;
@@ -46,33 +80,6 @@ export const getAllPostsThunk = () => async (dispatch) => {
   }
 };
 
-// export const getAllPostsThunk = () => async (dispatch) => {
-//     try {
-//         const res = await fetch('/api/posts');
-
-//         if (res.ok) {
-//             const data = await res.json();
-//             const posts = data.posts.map(post => {
-//                 // Ensure that each post includes the 'photo' property
-//                 if (post.photo) {
-//                     return post;
-//                 } else {
-//                     // If 'photo' is missing, you might want to provide a default value
-//                     return { ...post, photo: { photo_url: 'default_photo_url' } };
-//                 }
-//             });
-
-//             dispatch(getAllPosts(posts));
-//             return posts;
-//         } else {
-//             const errorData = await res.json();
-//             return errorData.errors;
-//         }
-//     } catch (error) {
-//         console.error('Error fetching posts:', error);
-//         return { error: 'An error occurred while fetching posts' };
-//     }
-// };
 
 export const getSinglePostThunk = (postId) => async (dispatch) => {
   const response = await fetch(`/api/posts/${postId}`);
@@ -174,18 +181,13 @@ const initialState = { allPosts: {}, singlePost: {} };
 
 //___________________________________________________
 
-//reducer:
+
 
 export default function postsReducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
     case GET_ALL_POSTS:
-      // newState = { ...state, allPosts: {}, singlePost: {} };
-      // // action.posts.forEach((post) => {
-      // // newState.allPosts[post.id] = post;
-      // // });
-      // return newState;
       return {
         ...state,
         allPosts: action.posts,
@@ -207,6 +209,27 @@ export default function postsReducer(state = initialState, action) {
       newState = { ...state, allPosts: { ...state.allPosts } };
       delete newState.allPosts[action.postId];
       return newState;
+
+
+    case FETCH_PHOTO_URL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case FETCH_PHOTO_URL_SUCCESS:
+      return {
+        ...state,
+        photoUrl: action.photoUrl,
+        loading: false,
+      };
+
+    case FETCH_PHOTO_URL_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
 
     default:
       return state;
