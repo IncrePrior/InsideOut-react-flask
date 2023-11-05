@@ -32,18 +32,20 @@
 
 .new-post {
   text-decoration: none;
-  color: black;
-  margin-bottom: 5px;
+  color: black !important;
+  margin-bottom: 18px;
   margin-right: 5px;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 100;
   right: 110px;
   top: 30px;
   padding: 7px 12px;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .new-post:hover {
-  color: aqua;
+  color: aqua !important;
 }
 
 .profile-button {

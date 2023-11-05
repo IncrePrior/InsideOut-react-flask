@@ -2,10 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
+import CreateButton from "./CreateButton";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import NewPost from '../NewPost/NewPost';
 import "./Navigation.css";
+
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
+  const post = useSelector((state) => state.posts.singlePost);
 
   return (
     <div className="nav-container">
@@ -29,9 +35,7 @@ function Navigation({ isLoaded }) {
       {isLoaded && (
         <div className="nav-profile">
           {sessionUser ? (
-            <NavLink className="new-post" to="/posts/new">
-              +
-            </NavLink>
+             <CreateButton user={user} postId={post.id} />
           ) : null}
           <ProfileButton user={sessionUser} />
         </div>
@@ -41,20 +45,3 @@ function Navigation({ isLoaded }) {
 }
 
 export default Navigation;
-
-// function Navigation({ isLoaded }){
-// 	const sessionUser = useSelector(state => state.session.user);
-
-// 	return (
-// 		<ul>
-// 			<li>
-// 				<NavLink exact to="/">Home</NavLink>
-// 			</li>
-// 			{isLoaded && (
-// 				<li>
-// 					<ProfileButton user={sessionUser} />
-// 				</li>
-// 			)}
-// 		</ul>
-// 	);
-// }

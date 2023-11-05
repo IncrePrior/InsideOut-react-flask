@@ -3,7 +3,8 @@ from flask_login import current_user, login_required
 from app.api.aws_helpers import upload_file_to_s3, remove_file_from_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
 from app.models import db, Post, Comment, Photo, User, Comment
-# from app.forms import PostForm, UpdatePostForm, CommentForm
+from app.forms import PostForm, EditPostForm
+
 
 
 post_routes = Blueprint('posts', __name__)
@@ -84,41 +85,108 @@ def check_next_post(postId):
 
 
 
-# @post_routes.route('/new', methods=['POST'])
-# @login_required
-# def create_post():
-#     """
-#     Create a new post.
-#     """
+@post_routes.route('/new', methods=['POST'])
+@login_required
+def create_post():
+    """
+    Create a new post.
+    """
 
-#     form = PostForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     if form.validate_on_submit():
+    if form.validate_on_submit():
 
-#         photo = form.data['photo']
-#         photo.filename = get_unique_filename(photo.filename)
-#         photo_upload = upload_file_to_s3(photo)
-#         print(photo_upload)
+        photo = form.data['photo']
+        photo.filename = get_unique_filename(photo.filename)
+        photo_upload = upload_file_to_s3(photo)
+        print(photo_upload)
 
-#         if 'errors' in photo_upload:
-#             return {'errors': photo_upload['errors']}, 400
+        if 'errors' in photo_upload:
+            return {'errors': photo_upload['errors']}, 400
 
-#         photo_url = photo_upload['url']
-#         new_photo = Photo(photo_url=photo_url)
-#         db.session.add(new_photo)
-#         db.session.commit()
+        photo_url = photo_upload['url']
+        new_photo = Photo(photo_url=photo_url)
+        db.session.add(new_photo)
+        db.session.commit()
 
-#         new_post = Post(
-#             user_id=current_user.id,
-#             photo_id=new_photo.id,
-#             title=form.data['title'],
-#             text=form.data['text']
-#         )
+        new_post = Post(
+            user_id=current_user.id,
+            photo_id=new_photo.id,
+            title=form.data['title'],
+            text=form.data['text']
+        )
 
-#         db.session.add(new_post)
-#         db.session.commit()
+        db.session.add(new_post)
+        db.session.commit()
 
-#         return jsonify(new_post.to_dict()), 201
+        return jsonify(new_post.to_dict()), 201
 
-#     return {'errors': form.errors}, 400
+    return {'errors': form.errors}, 400
+
+
+
+
+
+@post_routes.route('/<int:postId>/edit', methods=['PUT'])
+@login_required
+def edit_post(postId):
+    """
+    Edit post.
+    """
+
+    form = EditPostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+
+    edit_post = Post.query.get(postId)
+    post_to_dict=edit_post.to_dict()
+
+    if edit_post is None:
+        return {'errors': {'message':'Post not found'}}, 404
+    elif edit_post.user_id != current_user.id:
+        return {'errors': {'message':'forbidden'}}, 403
+
+    if form.validate_on_submit():
+        if form.photo.data:
+            photo = form.data['photo']
+            photo.filename = get_unique_filename(photo.filename)
+            photo_upload = upload_file_to_s3(photo)
+            if "errors" in photo_upload:
+                    return {"errors": photo_upload["errors"]}, 400
+            photo_url = photo_upload["url"]
+            edit_post.photo.photo_url = photo_url
+
+        edit_post.title=form.data['title'],
+        edit_post.text=form.data['text']
+        db.session.commit()
+
+        return jsonify(edit_post.to_dict()), 201
+
+    return {'errors': form.errors}, 400
+
+
+
+
+@post_routes.route("/<int:postId>", methods=["DELETE"])
+@login_required
+def delete_post(postId):
+    """
+    Delete post.
+    """
+    post = Post.query.get(postId)
+
+    if not post:
+        return {'errors': {'error':'Post not found'}}, 404
+    if post.user_id != current_user.id:
+        return {'errors': {'error':'forbidden'}}, 403
+
+    photo_url = post.photo.photo_url
+    remove_file_from_s3(photo_url)
+
+    post1 = Post.query.get(postId)
+
+    db.session.delete(post1)
+    db.session.commit()
+
+    return { 'message': 'Successfully Deleted'}, 200
