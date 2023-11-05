@@ -37,6 +37,33 @@ def getOnePost(postId):
 
 
 
+@post_routes.route("/check/<int:postId>/previous", methods=["GET"])
+def check_prev_post(postId):
+  """
+  Checking the previous post
+  """
+  previous_post = Post.query.filter(Post.id < postId).order_by(Post.id.desc()).first()
+
+  if(previous_post):
+    return jsonify({'previousPostId': previous_post.id}), 200
+  else:
+    return jsonify({'exists' : False}), 404
+
+
+@post_routes.route("/check/<int:postId>/next", methods=["GET"])
+def check_next_post(postId):
+  """
+  Checking next post
+  """
+  next_post = Post.query.filter(Post.id > postId).first()
+  if(next_post):
+    return jsonify({'nextPostId' : next_post.id}), 200
+  else:
+    return jsonify({'exists' : False}), 404
+
+
+
+
 # @post_routes.route('/new', methods=['POST'])
 # @login_required
 # def create_post():
