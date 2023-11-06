@@ -26,12 +26,6 @@ class Collection(db.Model):
 
 
     def to_dict(self):
-        # posts = Post.query.join(PostCollection).filter(PostCollection.collection_id == self.id).all()
-        # numPosts = len(posts)
-        # postPics = []
-
-        # if numPosts > 0:
-        #     postPics = [post.photos for post in posts]
 
         return {
             'id': self.id,
@@ -39,8 +33,6 @@ class Collection(db.Model):
             'description': self.description,
             'type': self.type,
             'user_id': self.user_id,
-            # 'numPosts': numPosts,
-            # 'postPics': postPics,
             'createdAt': self.created_at.strftime('%m/%d/%y'),
             'updatedAt': self.updated_at.strftime('%m/%d/%y'),
             'posts' : [post.to_dict() for post in self.posts]

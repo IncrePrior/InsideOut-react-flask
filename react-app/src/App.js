@@ -34,6 +34,11 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
+          {/* <Route path="/user">
+            <ProtectedRoute>
+              <UserProfile />
+            </ProtectedRoute>
+          </Route> */}
           <Route exact path='/posts/:postId'>
             <PostDetails />
           </Route>

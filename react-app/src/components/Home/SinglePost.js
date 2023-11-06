@@ -24,7 +24,8 @@ export default function SinglePost({ post }) {
          <div className="post-container">
             <div className="photo">
                <div>
-                     <img className='post-photo' src={photoUrl} alt={post.title} />
+                     {/* <img className='post-photo' src={photoUrl} alt={post.title} /> */}
+                     <img className='post-photo' src={photoUrl} />
                </div>
             </div>
          </div>

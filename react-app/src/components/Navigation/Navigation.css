@@ -33,15 +33,16 @@
 .new-post {
   text-decoration: none;
   color: black !important;
-  margin-bottom: 18px;
-  margin-right: 5px;
+  margin-bottom: 8px;
+  margin-right: 20px;
   font-size: 28px;
   font-weight: 100;
   right: 110px;
-  top: 30px;
+  top: 40px;
   padding: 7px 12px;
   background-color: transparent !important;
-  border: none !important;
+  /* border: none !important; */
+  /* border: 2px solid red; */
 }
 
 .new-post:hover {
@@ -111,7 +112,7 @@
   border-radius: 7px;
   left: -27px;
   z-index: 50;
-
+  border: 2px solid red;
 }
 
 .logout-dropdown1 {
@@ -161,4 +162,17 @@
   height: 1px;
   background-color: black !important;
   margin: 5px 0;
+} */
+
+
+/* .logout-dropdown2 {
+  position: absolute;
+  background-color: transparent;
+  padding: 10px;
+  width: 75px;
+  height: 80px;
+  top: 10px;
+  border-radius: 7px;
+  left: -35px;
+  z-index: 50;
 } */
