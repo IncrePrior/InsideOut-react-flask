@@ -79,22 +79,22 @@ export default function PostDetails() {
     <div className="single-post-main">
     <div className="post-photo-container">
     {hasPrevious && (
-         <img
-         src={`${process.env.PUBLIC_URL}/left.png`}
-         alt="Previous Post"
-         className="arrow-icon-left"
-         onClick={goToPreviousPost}
-       />
+        <img
+        src={`${process.env.PUBLIC_URL}/left.png`}
+        alt="Previous Post"
+        className="arrow-icon-left"
+        onClick={goToPreviousPost}
+      />
       )}
       <img className="current-post-image" src={photoUrl} alt="Post Image" />
 
       {hasNext && (
-         <img
-         src={`${process.env.PUBLIC_URL}/right.png`}
-         alt="Next Post"
-         className="arrow-icon-right"
-         onClick={goToNextPost}
-       />
+        <img
+        src={`${process.env.PUBLIC_URL}/right.png`}
+        alt="Next Post"
+        className="arrow-icon-right"
+        onClick={goToNextPost}
+      />
       )}
     </div>
 

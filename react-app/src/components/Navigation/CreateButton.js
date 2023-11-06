@@ -32,7 +32,7 @@ export default function CreateButton({ user, postId }) {
         }}
       >
         <div className="new-post">
-         +
+          +
         </div>
       </button>
       <div className={ulClassName}>
@@ -45,18 +45,8 @@ export default function CreateButton({ user, postId }) {
                   CREATE POST
                 </>
               }
-              modalComponent={<NewPost formType="Create" postId={postId} />}
+              modalComponent={<NewPost postId={postId} />}
             />
-
-            {/* <OpenModalButton
-              className="new-post-modal"
-              buttonText={
-                <>
-                  CREATE COLLECTION
-                </>
-              }
-              modalComponent={<CreateCollection collectionId={collectioonId} />}
-            /> */}
           </div>
         ) : null}
       </div>

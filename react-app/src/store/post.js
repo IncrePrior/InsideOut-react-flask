@@ -2,6 +2,7 @@ export const GET_ALL_POSTS = "posts/GET_ALL_POSTS";
 export const GET_SINGLE_POST = "posts/GET_SINGLE_POST";
 export const CREATE_SINGLE_POST = "posts/CREATE_SINGLE_POST";
 export const DELETE_SINGLE_POST = "posts/DELETE_SINGLE_POST";
+export const UPDATE_SINGLE_POST = "posts/UPDATE_SINGLE_POST";
 
 export const FETCH_PHOTO_URL_REQUEST = 'posts/FETCH_PHOTO_URL_REQUEST';
 export const FETCH_PHOTO_URL_SUCCESS = 'posts/FETCH_PHOTO_URL_SUCCESS';
@@ -23,6 +24,13 @@ const createSinglePost = (post) => ({
   type: CREATE_SINGLE_POST,
   post,
 });
+
+export const updateSinglePost = (post) => {
+  return {
+    type: UPDATE_SINGLE_POST,
+    post,
+  };
+};
 
 const deleteSinglePost = (postId) => ({
   type: DELETE_SINGLE_POST,
@@ -95,7 +103,7 @@ export const getSinglePostThunk = (postId) => async (dispatch) => {
 };
 
 export const createSinglePostThunk = (formData) => async (dispatch) => {
-  const response = await fetch("/api/posts/new-post", {
+  const response = await fetch("/api/posts/new", {
     method: "POST",
     body: formData,
   });
@@ -156,24 +164,68 @@ export const deleteSinglePostThunk = (postId) => async (dispatch) => {
 };
 
 export const editSinglePostThunk = (postId, formData) => async (dispatch) => {
-  const response = await fetch(`/api/posts/edit/${postId}`, {
+
+  console.log('Dispatching editSinglePostThunk');
+
+  const response = await fetch(`/api/posts/${postId}/edit`, {
     method: "PUT",
     body: formData,
   });
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(createSinglePost(formData));
-    return response;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
+    const realNewPost = await response.json();
+    const returnPost = { ...realNewPost };
+
+    console.log('editSinglePostThunk success:', returnPost);
+
+
+    await dispatch(updateSinglePost(realNewPost));
+    return returnPost;
   } else {
-    return ["An error occurred. Please try again."];
+    const data = await response.json();
+
+    console.log('editSinglePostThunk error:', data);
+
+
+    return data;
   }
 };
+
+
+// export const editSinglePostThunk = (postId, formData) => async (dispatch) => {
+//   const response = await fetch(`/api/posts/${postId}/edit`, {
+//     method: "PUT",
+//     body: formData,
+//   });
+
+//   if (response.ok) {
+//     const data = await response.json();
+//     dispatch(createSinglePost(formData));
+//     return response;
+//   } else if (response.status < 500) {
+//     const data = await response.json();
+//     if (data.errors) {
+//       return data.errors;
+//     }
+//   } else {
+//     return ["An error occurred. Please try again."];
+//   }
+// };
+
+// export const editSinglePostThunk = (FormData, postId) => async(dispatch) => {
+//   const response = await fetch(`/api/posts/${postId}`, {
+//     method: 'PUT',
+//     body: FormData
+//   });
+
+//   if(response.ok) {
+//     const data = await response.json();
+//     return data;
+//   } else {
+//     const errors = await response.json();
+//     return errors;
+//   }
+// };
 
 //___________________________________________________
 
@@ -198,12 +250,21 @@ export default function postsReducer(state = initialState, action) {
       return newState;
 
     case CREATE_SINGLE_POST:
-      newState = {
+      return {
         ...state,
-        allPosts: { ...state.allPosts },
+        allPosts: {
+          ...state.allPosts,
+          [action.post.id]: action.post, // Assuming your post object has an 'id' field
+        },
         singlePost: action.post,
       };
-      return newState;
+
+    case UPDATE_SINGLE_POST:
+
+    console.log('UPDATE_SINGLE_POST action processed:', action.post);
+
+      return { ...state, [action.post.id]: action.post };
+
 
     case DELETE_SINGLE_POST:
       newState = { ...state, allPosts: { ...state.allPosts } };

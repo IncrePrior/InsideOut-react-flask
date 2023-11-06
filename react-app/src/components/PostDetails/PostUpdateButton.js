@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeletePost from "../DeletePost/DeletePost";
+import EditPost from "../EditPost/EditPost";
 import NewPost from "../NewPost/NewPost";
 
 export default function PostUpdateButton({ user, postId }) {
@@ -31,7 +32,7 @@ export default function PostUpdateButton({ user, postId }) {
         }}
       >
         <div className="post-dots-container">
-         ...
+          ...
         </div>
       </button>
       <div className={ulClassName}>
@@ -44,7 +45,7 @@ export default function PostUpdateButton({ user, postId }) {
                   EDIT POST
                 </>
               }
-              modalComponent={<NewPost formType="Edit" postId={postId} />}
+              modalComponent={<EditPost postId={postId} />}
             />
 
             <OpenModalButton

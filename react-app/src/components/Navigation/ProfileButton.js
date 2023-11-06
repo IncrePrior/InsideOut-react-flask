@@ -52,7 +52,7 @@ function ProfileButton({ user }) {
       <div className={ulClassName} ref={ulRef}>
       <div className="logout-dropdown">
         {user ? (
-            <div >
+            <div className="logout-dropdown1">
             <p className="text">
               Hi <strong>{user.username}</strong>
             </p>
@@ -62,7 +62,7 @@ function ProfileButton({ user }) {
             </button>
           </div>
         ) : (
-          <div>
+          <div >
           <div className="profile-small-button">
             <OpenModalButton
               buttonText={<> LOG IN </>}

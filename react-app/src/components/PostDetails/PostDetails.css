@@ -100,8 +100,8 @@
   top: 37.5%;
   left: -130px;
   color: rgba(147, 141, 141, 0.898);
-  z-index: 1000;
-  margin-right: 140px;
+  margin-right: 200px;
+  z-index: 1 !important;
 }
 
 .arrow-icon-right {
@@ -110,8 +110,8 @@
   top: 37.5%;
   right: -130px;
   color: rgba(147, 141, 141, 0.898);
-  z-index: 1000;
-  margin-left: 140px;
+  margin-left: 200px;
+  z-index: 1 !important;
 }
 
 .arrow-icon-right:hover,
