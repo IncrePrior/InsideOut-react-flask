@@ -29,6 +29,8 @@ export default function Home() {
         {posts.map((post) => (
           <SinglePost key={post.id} post={post} />
         ))}
+
+
       </Masonry>
     </div>
   );

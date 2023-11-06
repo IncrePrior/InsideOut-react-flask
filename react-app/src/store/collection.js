@@ -109,7 +109,7 @@ export const DeleteCollectionThunk = (collectionId) => async (dispatch) => {
     });
 
     if (res.ok) {
-      const collection = await response.json()
+      const collection = await res.json()
       dispatch(deleteSingleCollection(collectionId));
       return res;
     } else if (res.status < 500) {
@@ -131,7 +131,7 @@ export const AddPostToCollectionThunk = (formData) => async (dispatch) => {
     });
 
     if(res.ok) {
-        const data = await response.json()
+        const data = await res.json()
         return res
     } else if (res.status < 500) {
 		const data = await res.json();

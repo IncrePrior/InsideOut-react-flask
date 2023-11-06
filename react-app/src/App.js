@@ -25,19 +25,17 @@ function App() {
           <Route exact path='/'>
             <LandingPage />
           </Route>
-          <Route exact path='/posts'>
-            <Home />
-          </Route>
           <Route path='/login' >
             <LoginFormPage />
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
+          <Route exact path='/posts'>
+            <Home />
+          </Route>
           {/* <Route path="/user">
-            <ProtectedRoute>
               <UserProfile />
-            </ProtectedRoute>
           </Route> */}
           <Route exact path='/posts/:postId'>
             <PostDetails />
