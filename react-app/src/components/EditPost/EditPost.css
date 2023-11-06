@@ -36,7 +36,6 @@
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  /* column-gap: 20px; */
 }
 
 .all-text-container {
