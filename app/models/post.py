@@ -11,7 +11,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     photo_id  = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('photos.id')), nullable=False)
-    title = db.Column(db.String(180), nullable=False)
+    title = db.Column(db.String(60), nullable=False)
     text = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)

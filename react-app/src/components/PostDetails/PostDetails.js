@@ -2,11 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import {
-  getSinglePostThunk,
-  checkPreviousPost,
-  checkNextPost,
-} from "../../store/post";
+import PostUpdateButton from "./PostUpdateButton";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import { getSinglePostThunk, checkPreviousPost, checkNextPost } from "../../store/post";
 import "./PostDetails.css";
 
 
@@ -14,7 +12,7 @@ import "./PostDetails.css";
 export default function PostDetails() {
   const dispatch = useDispatch();
   const { postId } = useParams();
-  console.log('postId in PostDetails:', postId);
+  // console.log('postId in PostDetails:', postId);
 
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -63,14 +61,14 @@ export default function PostDetails() {
     fetchPhotoUrl();
   }, [dispatch, postId]);
 
-  // Navigate to the previous post
+
   const goToPreviousPost = () => {
     if (prevId) {
       history.push(`/posts/${prevId}`);
     }
   };
 
-  // Navigate to the next post
+ 
   const goToNextPost = () => {
     if (nextId) {
       history.push(`/posts/${nextId}`);
@@ -81,30 +79,22 @@ export default function PostDetails() {
     <div className="single-post-main">
     <div className="post-photo-container">
     {hasPrevious && (
-         <img
-         src={`${process.env.PUBLIC_URL}/left.png`}
-         alt="Previous Post"
-         className="arrow-icon-left"
-         onClick={goToPreviousPost}
-       />
-        // <div className="arrow-icon-left" onClick={goToPreviousPost}>
-        //   ◀︎
-        // </div>
+        <img
+        src={`${process.env.PUBLIC_URL}/left.png`}
+        alt="Previous Post"
+        className="arrow-icon-left"
+        onClick={goToPreviousPost}
+      />
       )}
-
       <img className="current-post-image" src={photoUrl} alt="Post Image" />
 
-
       {hasNext && (
-         <img
-         src={`${process.env.PUBLIC_URL}/right.png`}
-         alt="Next Post"
-         className="arrow-icon-right"
-         onClick={goToNextPost}
-       />
-        // <div className="arrow-icon-right" onClick={goToNextPost}>
-        //   ►
-        // </div>
+        <img
+        src={`${process.env.PUBLIC_URL}/right.png`}
+        alt="Next Post"
+        className="arrow-icon-right"
+        onClick={goToNextPost}
+      />
       )}
     </div>
 
@@ -123,6 +113,9 @@ export default function PostDetails() {
         <div id="post-text-container">
           <p className="post-owner">{post.User?.username}</p>
           <p id="post-text">{post.text}</p>
+        </div>
+        <div>
+        <PostUpdateButton user={user} postId={post.id} />
         </div>
       </div>
     </div>

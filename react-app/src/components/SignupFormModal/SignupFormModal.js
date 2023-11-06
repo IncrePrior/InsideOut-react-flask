@@ -56,22 +56,6 @@ function SignupFormModal() {
 		}
 	};
 
-	// const handleSubmit = async (e) => {
-	// 	e.preventDefault();
-	// 	if (password === confirmPassword) {
-	// 		const data = await dispatch(signUp(username, email, password));
-	// 		if (data) {
-	// 			setErrors(data);
-	// 		} else {
-	// 			closeModal();
-	// 		}
-	// 	} else {
-	// 		setErrors([
-	// 			"Confirm Password field must be the same as the Password field",
-	// 		]);
-	// 	}
-	// };
-
 	return (
 		<div className="signup-container">
 			<img className="INSIDEOUT-logo1" alt="" src='https://image.jimcdn.com/app/cms/image/transf/none/path/sd0536822daf447dd/image/ic9d478a0b2938cfd/version/1699021732/image.png'></img>

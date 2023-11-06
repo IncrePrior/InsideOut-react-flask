@@ -3,9 +3,9 @@ export const GET_SINGLE_POST = "posts/GET_SINGLE_POST";
 export const CREATE_SINGLE_POST = "posts/CREATE_SINGLE_POST";
 export const DELETE_SINGLE_POST = "posts/DELETE_SINGLE_POST";
 
-export const FETCH_PHOTO_URL_REQUEST = 'posts/FETCH_PHOTO_URL_REQUEST';
-export const FETCH_PHOTO_URL_SUCCESS = 'posts/FETCH_PHOTO_URL_SUCCESS';
-export const FETCH_PHOTO_URL_FAILURE = 'posts/FETCH_PHOTO_URL_FAILURE';
+export const FETCH_PHOTO_URL_REQUEST = "posts/FETCH_PHOTO_URL_REQUEST";
+export const FETCH_PHOTO_URL_SUCCESS = "posts/FETCH_PHOTO_URL_SUCCESS";
+export const FETCH_PHOTO_URL_FAILURE = "posts/FETCH_PHOTO_URL_FAILURE";
 
 // Actions:
 
@@ -23,6 +23,7 @@ const createSinglePost = (post) => ({
   type: CREATE_SINGLE_POST,
   post,
 });
+
 
 const deleteSinglePost = (postId) => ({
   type: DELETE_SINGLE_POST,
@@ -43,11 +44,9 @@ export const fetchPhotoUrlFailure = (error) => ({
   error,
 });
 
-
 //___________________________________________________
 
 //thunks:
-
 
 export const fetchPhotoUrl = (postId) => async (dispatch) => {
   dispatch(fetchPhotoUrlRequest());
@@ -57,7 +56,7 @@ export const fetchPhotoUrl = (postId) => async (dispatch) => {
       const data = await response.json();
       dispatch(fetchPhotoUrlSuccess(data.photoUrl));
     } else {
-      throw new Error('Failed to fetch photo URL');
+      throw new Error("Failed to fetch photo URL");
     }
   } catch (error) {
     dispatch(fetchPhotoUrlFailure(error.message));
@@ -71,7 +70,6 @@ export const getAllPostsThunk = () => async (dispatch) => {
   if (res.ok) {
     const posts = await res.json();
 
-
     dispatch(getAllPosts(posts));
     return posts;
   } else {
@@ -79,7 +77,6 @@ export const getAllPostsThunk = () => async (dispatch) => {
     return data.errors;
   }
 };
-
 
 export const getSinglePostThunk = (postId) => async (dispatch) => {
   const response = await fetch(`/api/posts/${postId}`);
@@ -95,7 +92,7 @@ export const getSinglePostThunk = (postId) => async (dispatch) => {
 };
 
 export const createSinglePostThunk = (formData) => async (dispatch) => {
-  const response = await fetch("/api/posts/new-post", {
+  const response = await fetch("/api/posts/new", {
     method: "POST",
     body: formData,
   });
@@ -142,7 +139,6 @@ export const deleteSinglePostThunk = (postId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    // const post = await response.json()
     dispatch(deleteSinglePost(postId));
     return response;
   } else if (response.status < 500) {
@@ -156,6 +152,8 @@ export const deleteSinglePostThunk = (postId) => async (dispatch) => {
 };
 
 export const editSinglePostThunk = (postId, formData) => async (dispatch) => {
+  console.log("Dispatching editSinglePostThunk");
+
   const response = await fetch(`/api/posts/edit/${postId}`, {
     method: "PUT",
     body: formData,
@@ -175,13 +173,12 @@ export const editSinglePostThunk = (postId, formData) => async (dispatch) => {
   }
 };
 
+
 //___________________________________________________
 
 const initialState = { allPosts: {}, singlePost: {} };
 
 //___________________________________________________
-
-
 
 export default function postsReducer(state = initialState, action) {
   let newState;
@@ -198,18 +195,20 @@ export default function postsReducer(state = initialState, action) {
       return newState;
 
     case CREATE_SINGLE_POST:
-      newState = {
+      return {
         ...state,
-        allPosts: { ...state.allPosts },
+        allPosts: {
+          ...state.allPosts,
+          [action.post.id]: action.post,
+        },
         singlePost: action.post,
       };
-      return newState;
+
 
     case DELETE_SINGLE_POST:
       newState = { ...state, allPosts: { ...state.allPosts } };
       delete newState.allPosts[action.postId];
       return newState;
-
 
     case FETCH_PHOTO_URL_REQUEST:
       return {

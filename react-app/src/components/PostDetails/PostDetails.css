@@ -94,29 +94,98 @@
   padding-bottom: 10px;
 }
 
-
 .arrow-icon-left {
-    font-size: 20px;
-    font-weight: 100;
-    top: 37.5%;
-    left: -130px;
-    color: rgba(147, 141, 141, 0.898);
-    z-index: 1000;
-    margin-right: 140px;
-  }
+  font-size: 20px;
+  font-weight: 100;
+  top: 37.5%;
+  left: -130px;
+  color: rgba(147, 141, 141, 0.898);
+  margin-right: 200px;
+  z-index: 1 !important;
+}
 
-  .arrow-icon-right {
-    font-size: 20px;
-    font-weight: 100;
-    top: 37.5%;
-    right: -130px;
-    color: rgba(147, 141, 141, 0.898);
-    z-index: 1000;
-    margin-left: 140px;
-  }
+.arrow-icon-right {
+  font-size: 20px;
+  font-weight: 100;
+  top: 37.5%;
+  right: -130px;
+  color: rgba(147, 141, 141, 0.898);
+  margin-left: 200px;
+  z-index: 1 !important;
+}
+
+.arrow-icon-right:hover,
+.arrow-icon-left:hover {
+  cursor: pointer;
+}
 
 
-  .arrow-icon-right:hover,
-  .arrow-icon-left:hover {
-    cursor: pointer;
-  }
+.post-dots-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  /* margin-bottom: 30px; */
+  /* z-index: 10; */
+  height: 20px;
+  font-size: 50px;
+  color: rgb(166, 149, 157);
+  margin-left: 20px;
+  /* border: 2px solid red; */
+}
+
+.post-dots-container:hover {
+  cursor: pointer;
+  color: aqua;
+}
+
+/* .post-big-dots {
+    border: 2px solid green;
+    font-size: 50px;
+    color: rgb(166, 149, 157);
+    padding-bottom: 0;
+    z-index: 3000;
+    height: 30px;
+  } */
+
+.dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  border-radius: 10px;
+  width: 150px;
+  height: 80px;
+  margin-bottom: 150px;
+  margin-right: 100px;
+}
+
+.new-post-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+  width: 120px;
+  margin-bottom: 2px;
+}
+
+.new-post-modal:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: aqua;
+}
+
+
+
+.horizontal-line {
+  border-top: 1px solid rgb(83, 74, 78);
+  margin: 10px 0;
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
