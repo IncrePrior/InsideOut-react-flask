@@ -52,3 +52,24 @@
 .new-post-details {
     margin-bottom: 100px;
 }
+
+
+.submit-button1 {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(60, 59, 59);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 95%;
+    height: 45px;
+  }
+
+  .submit-button1:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: rgb(30, 206, 206);
+  }

@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import CreateButton from "./CreateButton";
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
-import NewPost from '../NewPost/NewPost';
 import "./Navigation.css";
 
 
@@ -35,8 +33,10 @@ function Navigation({ isLoaded }) {
       {isLoaded && (
         <div className="nav-profile">
           {sessionUser ? (
-             <CreateButton user={user} postId={post.id} />
-          ) : null}
+            post ? (
+              <CreateButton user={user} postId={post.id} />
+          ) : null
+        ) : null}
           <ProfileButton user={sessionUser} />
         </div>
       )}

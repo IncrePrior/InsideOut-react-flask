@@ -51,8 +51,8 @@
   width: 300px;
   height: 430px;
   border-radius: 15px;
-  background-color: #dcdcdc;
-  /* background-color: rgb(60, 59, 59); */
+  /* background-color: #dcdcdc; */
+  background-color: rgb(60, 59, 59);
   box-shadow: 1px 1px 10px rgb(150, 147, 147);
   color: white;
   margin-right: 10px;
@@ -164,8 +164,6 @@
   cursor: pointer;
 }
 
-.loading-text {
-}
 
 .upload-container {
   height: 150px;

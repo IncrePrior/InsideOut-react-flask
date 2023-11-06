@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  // const closeMenu = () => setShowMenu(false);
+  
 
   return (
     <div>
@@ -54,9 +54,10 @@ function ProfileButton({ user }) {
         {user ? (
             <div className="logout-dropdown1">
             <p className="text">
-              Hi <strong>{user.username}</strong>
+              Hi <strong>{user.username}!</strong>
             </p>
-            <p className="email"> {user.email}</p>
+            <div className="line1"></div>
+            {/* <p className="email"> {user.email}</p> */}
             <button className="logout-button" onClick={handleLogout}>
               Log Out
             </button>

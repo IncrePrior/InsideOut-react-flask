@@ -22,25 +22,15 @@ export default function NewPost() {
 
   useEffect(() => {
     const frontendErrors = {};
-
-    if (!photo) {
-      frontendErrors.photo = "Photo is required.";
-    }
-    if (!title) {
-      frontendErrors.title = "Title is required.";
-    }
-    if (title.length > 60) {
-      frontendErrors.name = "Title can not be longer than 60";
-    }
-    if (!text) {
-      frontendErrors.text = "Message is required.";
-    }
-    if (text.length > 1000) {
-      frontendErrors.text = "Message cannot be longer than 1000 characters";
-    }
-
+    if (!photo) frontendErrors.photo = "Photo is required.";
+    if (!title) frontendErrors.title = "Title is required.";
+    if (title.length > 60) frontendErrors.name = "Title can not be longer than 60";
+    if (!text) frontendErrors.text = "Message is required.";
+    if (text.length > 1000) frontendErrors.text = "Message cannot be longer than 1000 characters";
     setFrontendErrors(frontendErrors);
   }, [photo, title, text]);
+
+
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -71,20 +61,19 @@ export default function NewPost() {
     reader.readAsDataURL(file);
   };
 
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
 
-    if (Object.keys(frontendErrors).length > 0) {
-      return;
-    }
+    if (Object.keys(frontendErrors).length > 0) return;
 
     let formData = new FormData();
-
     formData.append("title", title);
     formData.append("text", text);
     formData.append("photo", photo);
-
 
     if (!photo) {
       console.log("Photo required");
@@ -95,13 +84,9 @@ export default function NewPost() {
     await dispatch(getAllPostsThunk());
 
     closeModal();
-
     await history.push("/posts");
   };
 
-  const toggleInput = () => {
-    setShowInput(!showInput);
-  };
 
   return (
     <div className="new-post-main-container">
@@ -139,6 +124,7 @@ export default function NewPost() {
               {!photoPreview && (
                 <input
                   type="file"
+                  id="fileInput"
                   accept="image/*"
                   onChange={handleFileSelect}
                 />

@@ -128,40 +128,29 @@ def create_post():
 
 
 
-@post_routes.route('/<int:postId>/edit', methods=['PUT'])
+@post_routes.route('/edit/<int:postId>', methods=['PUT'])
 @login_required
 def edit_post(postId):
     """
     Edit post.
     """
 
+    print("Inside edit_post route")
+
     form = EditPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-
-    edit_post = Post.query.get(postId)
-    post_to_dict=edit_post.to_dict()
-
-    if edit_post is None:
-        return {'errors': {'message':'Post not found'}}, 404
-    elif edit_post.user_id != current_user.id:
-        return {'errors': {'message':'forbidden'}}, 403
-
     if form.validate_on_submit():
-        if form.photo.data:
-            photo = form.data['photo']
-            photo.filename = get_unique_filename(photo.filename)
-            photo_upload = upload_file_to_s3(photo)
-            if "errors" in photo_upload:
-                    return {"errors": photo_upload["errors"]}, 400
-            photo_url = photo_upload["url"]
-            edit_post.photo.photo_url = photo_url
 
-        edit_post.title=form.data['title'],
-        edit_post.text=form.data['text']
+        post = Post.query.get(postId)
+
+        post.title = form.data['title']
+        post.text = form.data['text']
+
+
         db.session.commit()
 
-        return jsonify(edit_post.to_dict()), 201
+        return post.to_dict()
 
     return {'errors': form.errors}, 400
 

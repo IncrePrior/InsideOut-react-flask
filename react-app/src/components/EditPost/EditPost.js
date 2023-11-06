@@ -1,76 +1,62 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editSinglePostThunk } from "../../store/post";
+import { useHistory } from "react-router-dom";
+import { editSinglePostThunk, getSinglePostThunk } from "../../store/post";
 import { useModal } from "../../context/Modal";
 import "./EditPost.css";
 
 export default function EditPost() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { closeModal } = useModal();
     const user = useSelector((state) => state.session.user);
     const post = useSelector((state) => state.posts.singlePost);
+    const postId = useSelector((state) => state.posts.singlePost?.id);
 
-
-    console.log('EditPost component rendering');
+    // console.log('EditPost component rendering');
 
     const [title, setTitle] = useState(post.title || "");
     const [text, setText] = useState(post.text || "");
-    const [photo, setPhoto] = useState(null);
     const [errors, setErrors] = useState([]);
     const [frontendErrors, setFrontendErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
 
+
     useEffect(() => {
         const frontendErrors = {};
-
-        if (!photo) {
-            frontendErrors.photo = "Photo is required.";
-        }
-        if (!title) {
-            frontendErrors.title = "Title is required.";
-        }
-        if (title.length > 60) {
-            frontendErrors.title = "Title can not be longer than 60";
-        }
-        if (!text) {
-            frontendErrors.text = "Message is required.";
-        }
-        if (text.length > 1000) {
-            frontendErrors.text = "Message cannot be longer than 1000 characters";
-        }
-
+        if (!title) frontendErrors.title = "Title is required.";
+        if (title.length > 60) frontendErrors.title = "Title can not be longer than 60";
+        if (!text) frontendErrors.text = "Message is required.";
+        if (text.length > 1000) frontendErrors.text = "Message cannot be longer than 1000 characters";
         setFrontendErrors(frontendErrors);
-    }, [photo, title, text]);
+    }, [title, text]);
+
 
     const handleSubmit = async (e) => {
-
     console.log('Submit button clicked');
 
     e.preventDefault();
     setSubmitted(true);
 
-    if (Object.keys(frontendErrors).length > 0) {
-        return;
-    }
+    if (Object.keys(frontendErrors).length > 0)  return;
 
-    let formData = new FormData();
-
+    const formData = new FormData();
     formData.append("title", title);
     formData.append("text", text);
-    formData.append("photo", photo);
+
 
     try {
         const editPost = await dispatch(editSinglePostThunk(post.id, formData));
         if (editPost && editPost.errors) {
-        setErrors(editPost.errors);
-        } else {
-            closeModal();
+            setErrors(editPost.errors);
         }
-        } catch (error) {
-            console.error("An error occurred:", error.message);
+    } catch (error) {
+        console.error("An error occurred:", error.message);
+    }
+    await dispatch(getSinglePostThunk(post.id))
+    await closeModal();
         }
-    };
-
+        
 
     const cancelEdit = () => {
         closeModal();
@@ -92,11 +78,11 @@ export default function EditPost() {
             </div>
                 <div className="all-text-container">
                     <form onSubmit={handleSubmit} className="login-form1">
-                        <ul>
+                        {/* <ul>
                             {errors.map((error, idx) => (
                                 <li key={idx}>{error}</li>
                             ))}
-                        </ul>
+                        </ul> */}
                 <div className="new-post-details">
                     {frontendErrors.title && submitted && (
                         <p className="errors">{frontendErrors.title}</p>
@@ -129,7 +115,7 @@ export default function EditPost() {
                 <button type="submit" className="submit-button" onClick={handleSubmit}>
                     EDIT POST
                 </button>
-                <button type="button" className="submit-button" onClick={cancelEdit}>
+                <button type="button" className="submit-button1" onClick={cancelEdit}>
                     CANCEL
                 </button>
             </div>

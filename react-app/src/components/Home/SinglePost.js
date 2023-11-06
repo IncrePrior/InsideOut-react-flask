@@ -5,7 +5,6 @@ import './SinglePost.css';
 
 export default function SinglePost({ post }) {
    const history = useHistory();
-   // const user = useSelector(state => state.session.user);
 
    const onClick = () => {
 
@@ -13,7 +12,6 @@ export default function SinglePost({ post }) {
       console.log('Photo ID:', post.photoId);
 
       history.push(`/posts/${post.id}`);
-      // history.push(`/posts/${post.photoId}`);
    }
 
    const photoUrl = useSelector(state => {

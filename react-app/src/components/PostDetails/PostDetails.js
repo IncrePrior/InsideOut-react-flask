@@ -61,14 +61,14 @@ export default function PostDetails() {
     fetchPhotoUrl();
   }, [dispatch, postId]);
 
-  // Navigate to the previous post
+
   const goToPreviousPost = () => {
     if (prevId) {
       history.push(`/posts/${prevId}`);
     }
   };
 
-  // Navigate to the next post
+ 
   const goToNextPost = () => {
     if (nextId) {
       history.push(`/posts/${nextId}`);
