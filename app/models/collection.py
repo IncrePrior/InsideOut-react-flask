@@ -12,9 +12,9 @@ class Collection(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(180), nullable=False)
+    name = db.Column(db.String(60), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
-    type = db.Column(db.String(255), nullable=True)
+    type = db.Column(db.String(20), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)

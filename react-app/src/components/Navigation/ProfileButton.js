@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
@@ -41,7 +42,7 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  
+
 
   return (
     <div>
@@ -54,10 +55,33 @@ function ProfileButton({ user }) {
         {user ? (
             <div className="logout-dropdown1">
             <p className="text">
-              Hi <strong>{user.username}!</strong>
+             Hi {user.username}
             </p>
-            <div className="line1"></div>
-            {/* <p className="email"> {user.email}</p> */}
+            <p className="email"> {user.email}</p>
+            <p className="dots">. . .</p>
+            <div className="nav-links2">
+            <NavLink
+              style={{ textDecoration: "none" }}
+              onClick={() => setShowMenu(false)}
+              to="/user"
+              className="your-profile"
+            >
+              <div className="link3">
+              YOUR POSTS
+              </div>
+            </NavLink>
+            <NavLink
+              style={{ textDecoration: "none" }}
+              onClick={() => setShowMenu(false)}
+              to="/user"
+              className="your-profile"
+            >
+              <div className="link4">
+              {/* <p className="house">⌂</p> Your Home */}
+              YOUR COLLECTIONS
+              </div>
+            </NavLink>
+            </div>
             <button className="logout-button" onClick={handleLogout}>
               Log Out
             </button>

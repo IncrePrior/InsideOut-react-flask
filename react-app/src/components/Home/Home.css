@@ -1,3 +1,9 @@
+.main-home-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+
+}
+
 .Masonry {
   flex-direction: column;
 }

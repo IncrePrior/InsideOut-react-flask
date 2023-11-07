@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import NewPost from "../NewPost/NewPost";
-// import NewCollection from "../NewCollection/NewCollection";
+import NewCollection from "../NewCollection/NewCollection";
 
 
 export default function CreateButton({ user, postId }) {
@@ -39,13 +39,22 @@ export default function CreateButton({ user, postId }) {
         {user ? (
           <div className="dropdown">
             <OpenModalButton
-              className="new-post-modal"
+              className="new-post-modal1"
               buttonText={
                 <>
                   CREATE POST
                 </>
               }
               modalComponent={<NewPost postId={postId} />}
+            />
+            <OpenModalButton
+              className="new-post-modal1"
+              buttonText={
+                <>
+                  CREATE COLLECTION
+                </>
+              }
+              modalComponent={<NewCollection postId={postId} />}
             />
           </div>
         ) : null}

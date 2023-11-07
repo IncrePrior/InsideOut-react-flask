@@ -8,8 +8,8 @@ export default function SinglePost({ post, photoId }) {
 
    const onClick = () => {
 
-      console.log('Clicked on post with id:', post.id);
-      console.log('Photo ID:', post.photoId);
+      // console.log('Clicked on post with id:', post.id);
+      // console.log('Photo ID:', post.photoId);
 
       history.push(`/posts/${post.id}`);
    }
