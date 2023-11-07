@@ -95,7 +95,7 @@
   height: 30px;
   color: white;
   margin-left: auto;
-  /* margin-top: 45px; */
+
 }
 
 .logout-button:hover {
@@ -105,7 +105,7 @@
 
 .email {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   padding-bottom: 0;
   font-size: 14px;
   font-style: oblique;
@@ -128,7 +128,8 @@
   /* border: 2px solid red; */
   font-size: 18px;
   color: rgb(161, 158, 158);
-  margin: 0;
+  margin-top: 1px;
+  padding: 0;
 }
 
 .logout-dropdown {

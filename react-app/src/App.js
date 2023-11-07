@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import PostDetails from "./components/PostDetails/PostDetails";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import CollectionDetails from "./components/CollectionDetails/CollectionDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route exact path='/posts/:postId'>
             <PostDetails />
+          </Route>
+          <Route path="/collections/:collectionId">
+              <CollectionDetails />
           </Route>
         </Switch>
       )}

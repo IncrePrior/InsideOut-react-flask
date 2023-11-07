@@ -7,4 +7,4 @@ class CollectionForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
     type = StringField('type', validators=[DataRequired()])
-    user_id = IntegerField('user_id', validators=[DataRequired()])
+    # user_id = IntegerField('user_id', validators=[DataRequired()])

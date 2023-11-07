@@ -23,7 +23,7 @@ export default function SinglePost({ post, photoId }) {
          <div className="post-container">
             <div className="photo">
                <div>
-                     <img className='post-photo' src={photoUrl} />
+                     {photoUrl && <img className='post-photo' src={photoUrl} />}
                </div>
             </div>
          </div>

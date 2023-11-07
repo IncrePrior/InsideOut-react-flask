@@ -3,6 +3,9 @@ export const GET_SINGLE_COLLECTION = "collections/GET_SINGLE_COLLECTION";
 export const CREATE_SINGLE_COLLECTION = "collections/CREATE_SINGLE_COLLECTION";
 export const DELETE_SINGLE_COLLECTION = "collections/DELETE_SINGLE_COLLECTION";
 
+export const FETCH_COLLECTIONS_REQUEST = 'collections/FETCH_COLLECTIONS_REQUEST';
+export const FETCH_COLLECTIONS_SUCCESS = 'collections/FETCH_COLLECTIONS_SUCCESS';
+export const FETCH_COLLECTIONS_FAILURE = 'collections/FETCH_COLLECTIONS_FAILURE';
 
 // Actions:
 
@@ -11,9 +14,9 @@ const getAllCollections = (collections) => ({
   collections,
 });
 
-const getSingleCollection = (collectionId) => ({
+const getSingleCollection = (collection) => ({
   type: GET_SINGLE_COLLECTION,
-  collectionId,
+  collection,
 });
 
 const createSingleCollection = (collection) => ({
@@ -26,6 +29,25 @@ const deleteSingleCollection = (collectionId) => ({
   type: DELETE_SINGLE_COLLECTION,
   collectionId,
 });
+
+
+
+
+export const fetchCollectionsRequest = () => ({
+  type: FETCH_COLLECTIONS_REQUEST,
+});
+
+export const fetchCollectionsSuccess = (collection) => ({
+  type: FETCH_COLLECTIONS_SUCCESS,
+  collection,
+});
+
+export const fetchCollectionsFailure = (error) => ({
+  type: FETCH_COLLECTIONS_FAILURE,
+  error,
+});
+
+
 
 //___________________________________________________
 
@@ -49,6 +71,12 @@ export const AllCollectionsThunk = () => async (dispatch) => {
 export const SingleCollectionThunk = (collectionId) => async (dispatch) => {
   const res = await fetch(`/api/collections/${collectionId}`);
 
+  if (res.status === 404) {
+    const error = await res.json();
+    console.error('Collection not found:', error);
+    return error;
+  }
+
   if (res.ok) {
     const collection = await res.json();
     dispatch(getSingleCollection(collection));
@@ -68,7 +96,7 @@ export const CreateCollectionThunk = (formData) => async (dispatch) => {
   if (res.ok) {
     const collection = await res.json();
     dispatch(createSingleCollection(collection));
-    return res;
+    return collection;
   } else if (res.status < 500) {
     const data = await res.json();
     if (data.errors) {
@@ -166,7 +194,7 @@ export const RemovePostFromCollectionThunk = (collectionId, postId) => async (di
 
 //___________________________________________________
 
-const initialState = { allCollections: {}, singleCollection: {} };
+const initialState = { allCollections: {}, singleCollection: {}, collection: {}, loading: false, };
 
 //___________________________________________________
 
@@ -182,8 +210,7 @@ export default function collectionsReducer(state = initialState, action) {
         return newState
 
         case GET_SINGLE_COLLECTION:
-            newState = { ...state, allCollections: {}, singleCollection: {} };
-            newState.singleCollection = action.collectionId
+            newState = { ...state, singleCollection: {...action.collection}, };
         return newState
 
         case CREATE_SINGLE_COLLECTION:
@@ -194,6 +221,29 @@ export default function collectionsReducer(state = initialState, action) {
             newState = { ...state, allCollections: { ...state.allCollections}, singleCollection: {}}
             delete newState.allCollections[action.collectionId]
         return newState
+
+
+
+        case FETCH_COLLECTIONS_REQUEST:
+          return {
+            ...state,
+            loading: true,
+          };
+        case FETCH_COLLECTIONS_SUCCESS:
+          return {
+            ...state,
+            loading: false,
+            collections: action.payload,
+          };
+        case FETCH_COLLECTIONS_FAILURE:
+          return {
+            ...state,
+            loading: false,
+            error: action.error,
+          };
+
+
+
 
         default:
             return state;

@@ -5,7 +5,7 @@ from .auth_routes import validation_errors_to_error_messages
 from app.forms import CollectionForm, UpdateCollectionForm, PostCollectionForm
 
 
-collection_routes = Blueprint('boards', __name__)
+collection_routes = Blueprint('collections', __name__)
 
 
 @collection_routes.route('')
@@ -13,7 +13,8 @@ def getAllCollections():
     """Gets all collections."""
 
     collections = Collection.query.all()
-    return [collections.to_dict() for collection in collections]
+    return [collection.to_dict() for collection in collections]
+
 
 
 
@@ -23,6 +24,8 @@ def getSingleCollection(collectionId):
     """Gets single collection by Id."""
 
     collection = Collection.query.get(collectionId)
+    if not collection:
+        return {'error': 'Collection not found'}, 404
     return collection.to_dict()
 
 
@@ -45,7 +48,7 @@ def createCollection():
             name = form.data['name'],
             description = form.data['description'],
             type = form.data['type'],
-            user_id = form.data['user_id']
+            # user_id = form.data['user_id']
         )
 
         db.session.add(new_collection)

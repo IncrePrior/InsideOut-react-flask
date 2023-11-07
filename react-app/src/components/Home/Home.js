@@ -4,6 +4,7 @@ import SinglePost from "./SinglePost";
 import { getAllPostsThunk } from "../../store/post";
 import { NavLink } from "react-router-dom";
 import Masonry from "react-masonry-css";
+import CollectionListModal from "../CollectionsListModal/CollectionsListModal";
 import "./Home.css";
 
 export default function Home() {
@@ -27,7 +28,7 @@ export default function Home() {
             <NavLink
               style={{ textDecoration: "none" }}
               onClick={() => setShowMenu(false)}
-              to="/user"
+              to="/posts"
               className="your-profile"
             >
               <div className="link">
@@ -37,13 +38,19 @@ export default function Home() {
             <NavLink
               style={{ textDecoration: "none" }}
               onClick={() => setShowMenu(false)}
-              to="/user"
+              to="/posts"
               className="your-profile"
             >
               <div className="link1">
               YOUR COLLECTIONS
               </div>
             </NavLink>
+           {/* <button
+           className="link-1"
+           style={{ textDecoration: "none" }}
+           onClick={CollectionListModal}>
+           buttonText={<> YOUR COLLECTIONS </>}
+           </button> */}
             </div>
 
     <div className="image-grid">
