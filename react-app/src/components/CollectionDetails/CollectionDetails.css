@@ -61,7 +61,7 @@ flex-direction: column;
 
 .main-home-container1 {
     display: grid;
-    grid-template-columns: 1fr 4.3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
 }
 
 .main-home-container1 > *:first-child {
