@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation/Navigation";
 import Home from './components/Home/Home';
 import PostDetails from "./components/PostDetails/PostDetails";
 import LandingPage from "./components/LandingPage/LandingPage";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
+import CollectionDetails from "./components/CollectionDetails/CollectionDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,17 +27,23 @@ function App() {
           <Route exact path='/'>
             <LandingPage />
           </Route>
-          <Route exact path='/posts'>
-            <Home />
-          </Route>
           <Route path='/login' >
             <LoginFormPage />
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
+          <Route exact path='/posts'>
+            <Home />
+          </Route>
+          <Route path="/user">
+              <ProfilePage />
+          </Route>
           <Route exact path='/posts/:postId'>
             <PostDetails />
+          </Route>
+          <Route path="/collections/:collectionId">
+              <CollectionDetails />
           </Route>
         </Switch>
       )}

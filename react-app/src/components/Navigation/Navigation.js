@@ -32,6 +32,7 @@ function Navigation({ isLoaded }) {
       )}
       {isLoaded && (
         <div className="nav-profile">
+          
           {sessionUser ? (
             post ? (
               <CreateButton user={user} postId={post.id} />

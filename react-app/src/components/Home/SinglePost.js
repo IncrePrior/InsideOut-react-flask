@@ -3,28 +3,27 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 import './SinglePost.css';
 
-export default function SinglePost({ post }) {
+export default function SinglePost({ post, photoUrl }) {
    const history = useHistory();
 
    const onClick = () => {
 
-      console.log('Clicked on post with id:', post.id);
-      console.log('Photo ID:', post.photoId);
+      // console.log('Clicked on post with id:', post.id);
+      // console.log('Photo ID:', post.photoId);
 
       history.push(`/posts/${post.id}`);
    }
 
-   const photoUrl = useSelector(state => {
-      const photoId = state.posts.allPosts[post.id]?.photoId;
-      return state.posts.allPosts[photoId]?.photoUrl || '';
-   });
+   // const photoUrl = useSelector(state => {
+   //    return state.posts.allPosts[post.id]?.photoUrl;
+   // });
 
    return (
       <div onClick={onClick}>
          <div className="post-container">
             <div className="photo">
                <div>
-                     <img className='post-photo' src={photoUrl} alt={post.title} />
+                     <img className='post-photo' src={post.photoUrl} />
                </div>
             </div>
          </div>

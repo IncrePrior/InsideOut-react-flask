@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
-import NewPost from "../NewPost/NewPost";
-import NewCollection from "../NewCollection/NewCollection";
+import DeleteCollectionModal from "../DeleteCollection/DeleteCollectionModal";
+import UpdateCollectionModal from "../UpdateCollectionModal/UpdateCollectionModal";
 
 
-export default function CreateButton({ user, postId }) {
+export default function CollectionUpdateButton({ user, collectionId }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -31,30 +31,40 @@ export default function CreateButton({ user, postId }) {
           setShowMenu(!showMenu);
         }}
       >
-        <div className="new-post">
-          +
+        <div className="post-dots-container">
+          ...
         </div>
       </button>
       <div className={ulClassName}>
         {user ? (
           <div className="dropdown">
-            <OpenModalButton
-              className="new-post-modal1"
+            {/* <OpenModalButton
+              className="new-post-modal"
               buttonText={
                 <>
-                  CREATE POST
+                  EDIT COLLECTION
                 </>
               }
-              modalComponent={<NewPost postId={postId} />}
+              modalComponent={<EditCollectionModal collectionId={collectionId} />}
+            /> */}
+
+            <OpenModalButton
+              className="new-post-modal"
+              buttonText={
+                <>
+                  DELETE COLLECTION
+                </>
+              }
+              modalComponent={<DeleteCollectionModal collectionId={collectionId} />}
             />
             <OpenModalButton
-              className="new-post-modal1"
+              className="new-post-modal"
               buttonText={
                 <>
-                  CREATE COLLECTION
+                  UPDATE COLLECTION
                 </>
               }
-              modalComponent={<NewCollection postId={postId} />}
+              modalComponent={<UpdateCollectionModal collectionId={collectionId} />}
             />
           </div>
         ) : null}

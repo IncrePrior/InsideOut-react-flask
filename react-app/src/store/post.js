@@ -185,9 +185,14 @@ export default function postsReducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_ALL_POSTS:
+      const allPostsArray = [...action.posts]
+      const allPostsObj = {}
+
+      allPostsArray.forEach(post => allPostsObj[post.id] = post)
+
       return {
         ...state,
-        allPosts: action.posts,
+        allPosts: allPostsObj,
       };
 
     case GET_SINGLE_POST:
@@ -209,6 +214,10 @@ export default function postsReducer(state = initialState, action) {
       newState = { ...state, allPosts: { ...state.allPosts } };
       delete newState.allPosts[action.postId];
       return newState;
+
+
+
+      
 
     case FETCH_PHOTO_URL_REQUEST:
       return {

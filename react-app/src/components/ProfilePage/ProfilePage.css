@@ -1,0 +1,94 @@
+.one-card {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    column-gap: 0px;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
+}
+
+.one-card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collect-preview {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  row-gap: 10px;
+}
+
+.preview {
+    width: 100px;
+    height: 210px;
+    margin-right: -10px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    object-fit: cover;
+  }
+
+  .icon1 {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    object-fit: cover;
+  }
+
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+  }
+
+  .user-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+
+  .buttons-area {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .profile-button {
+    border: none;
+    background: none;
+    color: #333;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .profile-button:hover,
+  .profile-button:focus {
+    color: #ff4057;
+  }
+
+
+  .elem-item {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    column-gap: 20px;
+  }
