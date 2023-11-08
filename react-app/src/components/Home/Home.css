@@ -1,6 +1,6 @@
 .main-home-container {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 4.3fr 1fr;
 
 }
 
@@ -31,4 +31,19 @@
   max-width: 100%;
   width: 100%;
   margin-bottom: 0;
+}
+
+
+.transparent-button {
+  width: 200px;
+  font-size: 16px;
+  margin-top: 30px;
+  transition: color 0.3s;
+}
+
+
+.button:hover {
+  cursor: pointer;
+  color: aqua;
+
 }

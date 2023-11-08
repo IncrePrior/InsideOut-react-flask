@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from app.models import db, Collection, Post, PostCollection
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import CollectionForm, UpdateCollectionForm, PostCollectionForm
+from icecream import ic
 
 
 collection_routes = Blueprint('collections', __name__)
@@ -95,19 +96,21 @@ def deletePostFromCollection(collectionId):
     """
     Deletes collection.
     """
+    collection = Collection.query.get(collectionId)
 
-    current_user_id = current_user.to_dict()['id']
-    chosen_collection = Collection.query.get(collectionId)
+    if not collection:
+            return {"error" : "Collection could not found"}, 404
 
-    if not chosen_collection:
-        return {'errors': "No such collection"}, 400
-    if (current_user_id != chosen_collection.user_id):
-        return {'errors': "No permission to delete this board"}, 401
+    elif collection.user_id != current_user:
+            # ic(collection.user_id)
 
-    db.session.delete(chosen_collection)
+            return {"error" : "Unauthorized"}, 401
+
+    db.session.delete(collection)
     db.session.commit()
 
-    return { "message": "Successfully deleted" }
+    return {"message": "Successfully deleted comment"}
+
 
 
 

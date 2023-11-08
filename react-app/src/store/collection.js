@@ -3,9 +3,6 @@ export const GET_SINGLE_COLLECTION = "collections/GET_SINGLE_COLLECTION";
 export const CREATE_SINGLE_COLLECTION = "collections/CREATE_SINGLE_COLLECTION";
 export const DELETE_SINGLE_COLLECTION = "collections/DELETE_SINGLE_COLLECTION";
 
-export const FETCH_COLLECTIONS_REQUEST = 'collections/FETCH_COLLECTIONS_REQUEST';
-export const FETCH_COLLECTIONS_SUCCESS = 'collections/FETCH_COLLECTIONS_SUCCESS';
-export const FETCH_COLLECTIONS_FAILURE = 'collections/FETCH_COLLECTIONS_FAILURE';
 
 // Actions:
 
@@ -28,23 +25,6 @@ const createSingleCollection = (collection) => ({
 const deleteSingleCollection = (collectionId) => ({
   type: DELETE_SINGLE_COLLECTION,
   collectionId,
-});
-
-
-
-
-export const fetchCollectionsRequest = () => ({
-  type: FETCH_COLLECTIONS_REQUEST,
-});
-
-export const fetchCollectionsSuccess = (collection) => ({
-  type: FETCH_COLLECTIONS_SUCCESS,
-  collection,
-});
-
-export const fetchCollectionsFailure = (error) => ({
-  type: FETCH_COLLECTIONS_FAILURE,
-  error,
 });
 
 
@@ -80,7 +60,7 @@ export const SingleCollectionThunk = (collectionId) => async (dispatch) => {
   if (res.ok) {
     const collection = await res.json();
     dispatch(getSingleCollection(collection));
-    return res;
+    return collection;
   } else {
     const errors = await res.json();
     return errors;
@@ -136,17 +116,13 @@ export const DeleteCollectionThunk = (collectionId) => async (dispatch) => {
       method: "DELETE",
     });
 
-    if (res.ok) {
-      const collection = await res.json()
+    if(res.ok) {
+      const message = await res.json();
       dispatch(deleteSingleCollection(collectionId));
-      return res;
-    } else if (res.status < 500) {
-      const data = await res.json();
-      if (data.errors) {
-        return data.errors;
-      }
+      return message;
     } else {
-      return ["An error occurred. Please try again."];
+      const errors = res.json();
+      return errors;
     }
   };
 
@@ -217,35 +193,22 @@ export default function collectionsReducer(state = initialState, action) {
             newState = { ...state, allCollections: { ...state.allCollections}, singleCollection: { ...action.collection} }
         return newState
 
+
         case DELETE_SINGLE_COLLECTION:
-            newState = { ...state, allCollections: { ...state.allCollections}, singleCollection: {}}
+          // newState = { ...state }
+          // delete newState[action.collectionId]
+
+          // console.log("collectionsReducer: Collection deleted. New state:", newState);
+
+          // return newState
+          // default:
+          // return state
+
+            newState = { ...state, allCollections: { ...state.allCollections}, singleCollection: { ...action.collection}}
             delete newState.allCollections[action.collectionId]
-        return newState
+            return newState
 
-
-
-        case FETCH_COLLECTIONS_REQUEST:
-          return {
-            ...state,
-            loading: true,
-          };
-        case FETCH_COLLECTIONS_SUCCESS:
-          return {
-            ...state,
-            loading: false,
-            collections: action.payload,
-          };
-        case FETCH_COLLECTIONS_FAILURE:
-          return {
-            ...state,
-            loading: false,
-            error: action.error,
-          };
-
-
-
-
-        default:
+            default:
             return state;
   }
 }

@@ -215,6 +215,10 @@ export default function postsReducer(state = initialState, action) {
       delete newState.allPosts[action.postId];
       return newState;
 
+
+
+      
+
     case FETCH_PHOTO_URL_REQUEST:
       return {
         ...state,
