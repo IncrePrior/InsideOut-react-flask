@@ -49,7 +49,8 @@ def createCollection():
             name = form.data['name'],
             description = form.data['description'],
             type = form.data['type'],
-            # user_id = form.data['user_id']
+            user_id = current_user.id
+
         )
 
         db.session.add(new_collection)
@@ -96,15 +97,23 @@ def deletePostFromCollection(collectionId):
     """
     Deletes collection.
     """
+    # current_user_id = current_user.to_dict()["id"]
+    # owner_collection = Collection.query.get(collectionId)
+
+    # if not owner_collection:
+    #     return {'errors': "Collection could not be found"}, 404
+    # if (current_user_id != owner_collection.user_id):
+    #     return {'errors': "Unauthorized"}, 401
+
     collection = Collection.query.get(collectionId)
 
     if not collection:
             return {"error" : "Collection could not found"}, 404
 
-    elif collection.user_id != current_user:
-            # ic(collection.user_id)
+    # elif collection.user_id != current_user:
+    #         # ic(collection.user_id)
 
-            return {"error" : "Unauthorized"}, 401
+    #         return {"error" : "Unauthorized"}, 401
 
     db.session.delete(collection)
     db.session.commit()

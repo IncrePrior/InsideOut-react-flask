@@ -22,16 +22,16 @@ export default function Home() {
   }, [dispatch]);
 
   const toggleDropdown = () => {
-    console.log("Toggling dropdown", showDropdown);
-    console.log("collections", collections);
-    console.log("object", collectionsObj);
+    // console.log("Toggling dropdown", showDropdown);
+    // console.log("collections", collections);
+    // console.log("object", collectionsObj);
     setShowDropdown(!showDropdown);
   };
 
   return (
     <div className="main-home-container">
       <div className="nav-links1">
-        <NavLink
+        {/* <NavLink
           style={{ textDecoration: "none" }}
           onClick={() => setShowMenu(false)}
           to="/posts"
@@ -40,7 +40,7 @@ export default function Home() {
           <div className="link">
             YOUR POSTS
           </div>
-        </NavLink>
+        </NavLink> */}
 
           <div className="dropdown10">
             <button
@@ -50,6 +50,7 @@ export default function Home() {
           >
               YOUR COLLECTIONS
             </button>
+            <div className="dropdown5">
             {showDropdown && (
               <ul className="collection-list1">
                 {collections.map((collection) => (
@@ -59,6 +60,7 @@ export default function Home() {
                 ))}
               </ul>
             )}
+            </div>
           </div>
 
       </div>

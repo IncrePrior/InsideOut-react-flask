@@ -1,0 +1,106 @@
+.submit-button5 {
+    /* margin-top: 20px; */
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(30, 206, 206);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 95%;
+    height: 45px;
+}
+
+.submit-button5:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: aqua;
+}
+
+
+
+.submit-button6 {
+    margin-bottom:200px;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(30, 206, 206);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 95%;
+    height: 45px;
+}
+
+.submit-button6:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: aqua;
+}
+
+
+.update-collection-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: rgb(171, 169, 169);
+    height: 600px;
+    width: 600px;
+    padding-bottom: 40px;
+    padding-top: 0;
+    z-index: 5000;
+}
+
+
+.top-of-update-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    /* border: 2px solid red; */
+    margin-top: 0;
+    height: 200px;
+}
+
+#modal-content {
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.INSIDEOUT-logo3 {
+    width: 150px;
+    margin-bottom: 50px;
+    padding-top: 0;
+}
+
+
+
+.login-form5 {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    /* position: relative; */
+  }
+
+  .single-input {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(53, 52, 52);
+    /* margin: 30px; */
+  }
+
+  .input-text {
+    border: 2px solid red;
+
+  }

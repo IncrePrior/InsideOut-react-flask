@@ -65,16 +65,21 @@ const cancelEdit = () => {
 };
 
 return (
-    <div className="new-collection-main-container">
+    <div className="update-collection-main-container">
+
+        <div className="top-of-update-container">
         <img
-        className="INSIDEOUT-logo2"
+        className="INSIDEOUT-logo3"
         alt=""
         src="https://image.jimcdn.com/app/cms/image/transf/none/path/sd0536822daf447dd/image/ic9d478a0b2938cfd/version/1699021732/image.png"
         ></img>
 
             <div className="new-h1">Update Collection</div>
+            </div>
+
+
                 <div className="inputs-new-collection-container">
-                <form onSubmit={handleSubmit}  className="login-form2">
+                <form onSubmit={handleSubmit}  className="login-form5">
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -87,6 +92,7 @@ return (
             <label className="single-input">
                 Name
             <input
+                id="input-text"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -113,6 +119,7 @@ return (
             <label className="single-input">
                 Type
             <input
+                id="input-text"
                 type="text"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
@@ -120,8 +127,8 @@ return (
                 required
             />
             </label>
-            <button className="submit-button2" type="submit">UPDATE</button>
-            <button className="submit-button2" type="submit" onClick={cancelEdit}>CANCEL</button>
+            <button className="submit-button5" type="submit">UPDATE</button>
+            <button className="submit-button6" type="submit" onClick={cancelEdit}>CANCEL</button>
             </div>
         </form>
     </div>
