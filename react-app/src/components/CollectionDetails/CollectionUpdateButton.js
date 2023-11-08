@@ -31,7 +31,7 @@ export default function CollectionUpdateButton({ user, collectionId }) {
           setShowMenu(!showMenu);
         }}
       >
-        <div className="post-dots-container">
+        <div className="post-dots-container1">
           ...
         </div>
       </button>
@@ -49,7 +49,7 @@ export default function CollectionUpdateButton({ user, collectionId }) {
             /> */}
 
             <OpenModalButton
-              className="new-post-modal"
+              className="new-post-modal1"
               buttonText={
                 <>
                   DELETE COLLECTION
@@ -58,7 +58,7 @@ export default function CollectionUpdateButton({ user, collectionId }) {
               modalComponent={<DeleteCollectionModal collectionId={collectionId} />}
             />
             <OpenModalButton
-              className="new-post-modal"
+              className="new-post-modal1"
               buttonText={
                 <>
                   UPDATE COLLECTION

@@ -21,7 +21,7 @@ export default function DeletePost({ postId }) {
       setErrors(data.errors);
     }
     closeModal();
-    history.push(`/`);
+    history.push(`/posts`);
   };
 
   return (

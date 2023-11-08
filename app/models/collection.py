@@ -15,7 +15,7 @@ class Collection(db.Model):
     name = db.Column(db.String(60), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     type = db.Column(db.String(20), nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
