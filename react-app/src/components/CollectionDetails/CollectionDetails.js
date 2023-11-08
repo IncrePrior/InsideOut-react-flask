@@ -25,9 +25,10 @@ export default function CollectionDetails() {
     const [showMenu, setShowMenu] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
 
+
     useEffect(async () => {
         const res = await dispatch(SingleCollectionThunk(collectionId))
-        // dispatch(AllCollectionsThunk())
+        // const allCollectionsList = await dispatch(AllCollectionsThunk());
         setCollectionPosts(res.posts)
     }, [dispatch, collectionId]);
 
@@ -36,24 +37,15 @@ export default function CollectionDetails() {
     //   }, [dispatch]);
 
 
+
     if (loading) {
         return <p>Loading...</p>;
     }
-
     if (!collection) {
         return <p>Collection not found.</p>;
     }
 
-    // useEffect(async () => {
-    //     const collectionResponse = await dispatch(SingleCollectionThunk(collectionId));
-    //     const allCollectionsResponse = await dispatch(AllCollectionsThunk());
-    //     setCollectionPosts(collectionResponse.posts);
-    // }, [dispatch, collectionId]);
-
-
-
 // const posts = collection.posts? postsArr.filter(post => collection.posts.includes(post.id)) : [];
-
 // const isOwner = user && user.id === collection.user_id;
 
 const toggleDropdown = () => {
