@@ -11,7 +11,7 @@
 }
 
 
-.confirm-button4 {
+.confirm-button1 {
     border: rgb(30, 206, 206);
     background-color: rgb(30, 206, 206);
     font-size: 12px;
@@ -21,14 +21,14 @@
     height: 40px;
     color: white;
     margin-bottom: 8px;
-  }
+}
 
-  .confirm-button4:hover {
+.confirm-button1:hover {
     cursor: pointer;
     background-color: aqua;
-  }
+}
 
-  .cancel-button4 {
+.cancel-button1 {
     border: rgb(30, 206, 206);
     background-color:  white;
     font-size: 12px;
@@ -37,15 +37,10 @@
     width: 70%;
     height: 40px;
     color: rgb(125, 111, 111);
-  }
+}
 
-  .cancel-button4:hover {
+.cancel-button1:hover {
     cursor: pointer;
     background-color: aqua;
     color: white;
-  }
-
-
-  .create-edit-board-buttons {
-    
-  }
+}

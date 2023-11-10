@@ -1,19 +1,17 @@
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import PostUpdateButton from "./PostUpdateButton";
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import { getSinglePostThunk, checkPreviousPost, checkNextPost } from "../../store/post";
+import AddPostToCollection from "../AddPostToCollection/AddPostToCollection";
 import "./PostDetails.css";
+
 
 
 
 export default function PostDetails() {
   const dispatch = useDispatch();
   const { postId } = useParams();
-  // console.log('postId in PostDetails:', postId);
-
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const post = useSelector((state) => state.posts.singlePost);
@@ -24,6 +22,8 @@ export default function PostDetails() {
   const [prevId, setPrevId] = useState(null);
   const [errors, setErrors] = useState([]);
   const [photoUrl, setPhotoUrl] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const ulRef = useRef();
 
   useEffect(() => {
     dispatch(getSinglePostThunk(postId));
@@ -68,7 +68,7 @@ export default function PostDetails() {
     }
   };
 
- 
+
   const goToNextPost = () => {
     if (nextId) {
       history.push(`/posts/${nextId}`);
@@ -98,10 +98,19 @@ export default function PostDetails() {
       )}
     </div>
 
+
+<div className="post-info-main">
+  <div className="left-container">
+
+  </div>
+
     <div className="post-info-container">
       <h1 className="post-title">{post.title}</h1>
 
       <div className="text-area">
+
+
+
         <div className="owner-info">
           <img
             className="post-owner-icon"
@@ -109,6 +118,9 @@ export default function PostDetails() {
             alt="Owner Icon"
           />
         </div>
+
+
+
 
         <div id="post-text-container">
           <p className="post-owner">{post.User?.username}</p>
@@ -118,10 +130,47 @@ export default function PostDetails() {
         <PostUpdateButton user={user} postId={post.id} />
         </div>
       </div>
-    </div>
+
+
     <div className="comments-container">
       <h3 className="post-comment">Comments</h3>
     </div>
+    </div>
+
+    <div>
+    <button
+        id="add-post-id"
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowMenu(!showMenu);
+        }}
+      style={{
+        background: 'rgb(238, 233, 233)',
+        border: '1px solid transparent',
+        color: '#000',
+        cursor: 'pointer',
+        transition: 'color 0.3s',
+      }}
+      className="transparent-button"
+      onMouseOver={(e) => (e.target.style.color = 'aqua')}
+      onMouseOut={(e) => (e.target.style.color = '#000')}
+    >
+        ADD POST TO COLLECTION
+      </button>
+
+      {showMenu && (
+          <AddPostToCollection
+            post_id={post.id}
+            // collection_id={collection.id}
+            onSelectCollection={(selectedCollection) => {
+              // Handle the selected collection if needed
+              console.log(selectedCollection);
+            }}
+          />
+        )}
+</div>
+
+  </div>
   </div>
   );
 }

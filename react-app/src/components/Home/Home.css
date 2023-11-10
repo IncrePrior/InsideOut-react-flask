@@ -14,7 +14,13 @@
   padding: 0 0;
   box-sizing: content-box;
   min-height: calc(100vh - 100px);
+  border-left: 2px solid rgb(223, 222, 222);
+  border-right: 2px solid rgb(223, 222, 222);
+  /* box-shadow: 1px 1px 10px rgb(223, 222, 222); */
+  /* z-index: 1; */
 }
+
+
 
 .my-masonry-grid {
   display: flex;

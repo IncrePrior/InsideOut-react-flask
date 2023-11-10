@@ -13,7 +13,8 @@ export default function Home() {
   const posts = postsObj ? Object.values(postsObj) : [];
   const collectionsObj = useSelector((state) => state.collections.allCollections);
   const collections = collectionsObj ? Object.values(collectionsObj) : [];
-  const [showMenu, setShowMenu] = useState(false);
+  const user = useSelector(state => state.session.user);
+  const user_collections = collections.filter(collections => collections.user_id === user.id);
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
@@ -44,16 +45,24 @@ export default function Home() {
 
           <div className="dropdown10">
             <button
-            onClick={toggleDropdown}
-            style={{ background: 'transparent', border: '1px solid transparent', color: '#000' }}
-            className="transparent-button"
-          >
+              onClick={toggleDropdown}
+              style={{
+                background: 'transparent',
+                border: '1px solid transparent',
+                color: '#000',
+                cursor: 'pointer',
+                transition: 'color 0.3s',
+              }}
+              className="transparent-button"
+              onMouseOver={(e) => (e.target.style.color = 'aqua')}
+              onMouseOut={(e) => (e.target.style.color = '#000')}
+            >
               YOUR COLLECTIONS
             </button>
             <div className="dropdown5">
             {showDropdown && (
               <ul className="collection-list1">
-                {collections.map((collection) => (
+                {user_collections.map((collection) => (
                   <li key={collection.id}>
                     <NavLink to={`/collections/${collection.id}`}>{collection.name}</NavLink>
                   </li>

@@ -135,9 +135,13 @@ def addPostToCollection():
     form = PostCollectionForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    ic(form.data)
+
     if form.validate_on_submit():
         collection = Collection.query.get(form.data['collection_id'])
         post = Post.query.get(form.data['post_id'])
+
+
 
         if not collection or not post:
             return {'errors': "Invalid input"}, 400
@@ -145,15 +149,24 @@ def addPostToCollection():
         if PostCollection.query.filter_by(post_id=post.id, collection_id=collection.id).first():
             return {'errors': "Post is already in collection."}, 400
 
-        collection.posts_collections.append(PostCollection(post_id=post.id))
+        # collection.posts_collections.append(PostCollection(post_id=post.id))
+        collection.posts.append(post)
+
+        ic([post.to_dict() for post in collection.posts])
+
 
         db.session.commit()
         return collection.to_dict()
 
+
     return {'errors': form.errors}, 400
 
 
+ # collection.posts_collections.append(PostCollection(post_id=post.id))
+        # db.session.commit()
 
+        # updated_collection = Collection.query.get(collection.id).to_dict()
+        # return {'collection': updated_collection}
 
 @collection_routes.route('/<int:collectionId>/removePost/<int:postId>', methods=['DELETE'])
 @login_required
@@ -163,7 +176,10 @@ def removePostFromCollection(collectionId, postId):
     """
 
     collection = Collection.query.get(collectionId)
-    collection.pins = [post for post in collection.posts if post.id != postId]
+    post = Post.query.get(postId)
+
+    idx = collection.posts.index(post)
+    collection.posts.pop(idx)
 
     db.session.commit()
     return collection.to_dict()
