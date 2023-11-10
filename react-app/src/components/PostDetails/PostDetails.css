@@ -97,7 +97,7 @@
   padding-bottom: 10px;
 }
 
-.arrow-icon-left {
+/* .arrow-icon-left {
   font-size: 20px;
   font-weight: 100;
   top: 37.5%;
@@ -105,9 +105,20 @@
   color: rgba(147, 141, 141, 0.898);
   margin-right: 200px;
   z-index: 1 !important;
+} */
+
+.arrow-icon-left {
+  font-size: 20px;
+  font-weight: 100;
+  top: 50%;
+  left: 10px;
+  color: rgba(147, 141, 141, 0.898);
+  z-index: 1 !important;
+  position: absolute;
+  transform: translateY(-50%);
 }
 
-.arrow-icon-right {
+/* .arrow-icon-right {
   font-size: 20px;
   font-weight: 100;
   top: 37.5%;
@@ -115,6 +126,17 @@
   color: rgba(147, 141, 141, 0.898);
   margin-left: 200px;
   z-index: 1 !important;
+} */
+
+.arrow-icon-right {
+  font-size: 20px;
+  font-weight: 100;
+  top: 50%;
+  right: 10px;
+  color: rgba(147, 141, 141, 0.898);
+  z-index: 1 !important;
+  position: absolute;
+  transform: translateY(-50%);
 }
 
 .arrow-icon-right:hover,

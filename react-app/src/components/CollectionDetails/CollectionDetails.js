@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ulRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Masonry from "react-masonry-css";
 import OpenModalButton from '../OpenModalButton/OpenModalButton'
 import SinglePost from '../Home/SinglePost';
 import { SingleCollectionThunk } from '../../store/collection';
-import { RemovePostFromCollectionThunk } from '../../store/collection';
+import { RemovePostFromCollectionThunk, AllCollectionsThunk } from '../../store/collection';
 import CollectionUpdateButton from './CollectionUpdateButton';
 import RemovePostFromCollection from '../RemovePostFromCollection/RemovePostFromCollection';
 import { NavLink } from "react-router-dom";
@@ -29,10 +29,27 @@ export default function CollectionDetails() {
 
 
     useEffect(async () => {
-        const res = await dispatch(SingleCollectionThunk(collectionId))
-            setCollectionPosts(res.posts)
+        const res = await dispatch(AllCollectionsThunk(collection))
+        // .then(dispatch(SingleCollectionThunk(collectionId)))
+        const res1 = await dispatch(SingleCollectionThunk(collectionId))
+            setCollectionPosts(res1.posts)
+            setRefresh("")
 
-    }, [dispatch, collectionId ]);
+    }, [dispatch, collectionId, refresh ]);
+
+
+// useEffect(() => {
+//     if (showDropdown) return;
+
+//     const closeMenu = (e) => {
+//       if (!ulRef.current.contains(e.target)) {
+//         setShowDropdown(false);
+//       }
+//     };
+//     document.addEventListener("click", closeMenu);
+
+//     return () => document.removeEventListener("click", closeMenu);
+//   }, [showDropdown]);
 
 
 
@@ -46,6 +63,9 @@ export default function CollectionDetails() {
 const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
 };
+
+
+
 
 // const handleRemovePost = async (postId) => {
 //     await dispatch(RemovePostFromCollectionThunk(collectionId, postId));
@@ -111,7 +131,7 @@ return (
                                     <OpenModalButton
                                     className={"menu-text1"}
                                     buttonText='remove'
-                                    modalComponent={<RemovePostFromCollection postId={post.id} />} />
+                                    modalComponent={<RemovePostFromCollection postId={post.id} setRefresh={setRefresh}/>} />
                                 </div>
                             ))}
                         </Masonry>
