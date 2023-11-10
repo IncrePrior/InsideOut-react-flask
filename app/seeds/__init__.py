@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .photos import seed_photos, undo_photos
 from .posts import seed_posts, undo_posts
 from .collections import seed_collections, undo_collections
+from .post_collection import undo_posts_collections
 
 # from .comments import seed_comments, undo_comments
 
@@ -17,6 +18,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
+        undo_posts_collections()
         undo_collections()
         undo_posts()
         undo_photos()
@@ -32,6 +34,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     # undo_comments()
+    undo_posts_collections()
     undo_photos()
     undo_collections()
     undo_posts()

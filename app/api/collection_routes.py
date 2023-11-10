@@ -174,16 +174,29 @@ def removePostFromCollection(collectionId, postId):
     """
     Removes post from collection.
     """
-
+    print("AAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! - TOP")
     collection = Collection.query.get(collectionId)
+
+    ic(collection)
+
     post = Post.query.get(postId)
 
+    ic(post)
+
     idx = collection.posts.index(post)
+
+    ic(idx)
+
+    ic(collection.posts[idx])
+
     collection.posts.pop(idx)
 
-    # postCollection = PostCollection.query.filter(PostCollection.collection_id.like(collectionId))
+    print("AAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! - BOTTOM")
+
+    # postCollection = PostCollection.query.filter(PostCollection.collection_id == collectionId)
+    # post1 = [post for post in postCollection if post.id == postId]
 
 
-
+    # db.session.delete(post1)
     db.session.commit()
     return collection.to_dict()
