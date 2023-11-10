@@ -1,0 +1,84 @@
+.add-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: baseline;
+    padding-top: 20px;
+    width: 200px;
+    margin-top: 10px;
+    color: white;
+    /* font-weight: bold; */
+    font-size: 14px;
+    background-color: rgb(183, 183, 183);
+    border-radius: 5px;
+    margin-left: 13px;
+
+}
+
+
+.display-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 20px;
+
+
+}
+
+.add-post-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.add-buttons button {
+    /* all: unset; */
+    /* padding: 10px 20px; */
+    background-color: rgb(30, 206, 206);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-buttons button:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
+
+.add-post-button {
+    padding-top: 20px;
+    display: flex;
+    column-gap: 150px;
+    height: 25px;
+}
+
+.add-post-button button {
+    all: unset;
+    padding: 10px 20px;
+    background-color: rgb(30, 206, 206);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-post-button button:hover {
+    background-color: aqua;
+}
+
+#collection-list-for-adding-post {
+    /* border: 2px solid red; */
+    /* border-bottom: 1px solid rgb(234, 236, 237); */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+
+#collection-list-for-adding-post:hover {
+    cursor: pointer;
+    color: aqua;
+}

@@ -38,16 +38,6 @@ export default function CollectionUpdateButton({ user, collectionId }) {
       <div className={ulClassName}>
         {user ? (
           <div className="dropdown">
-            {/* <OpenModalButton
-              className="new-post-modal"
-              buttonText={
-                <>
-                  EDIT COLLECTION
-                </>
-              }
-              modalComponent={<EditCollectionModal collectionId={collectionId} />}
-            /> */}
-
             <OpenModalButton
               className="new-post-modal1"
               buttonText={

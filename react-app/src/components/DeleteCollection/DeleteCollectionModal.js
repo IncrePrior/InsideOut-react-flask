@@ -28,16 +28,16 @@ export default function DeleteCollectionModal({ collectionId, collection }) {
 
     return (
         <div className='delete-container'>
-            <div className="h1">Confirm Delete</div>
+            <div className="h1">Are you sure?</div>
             {errors.error && (
                 <p className="errors errors-ul">
                 {errors.error}
                 </p>
             )}
-            <div className='create-edit-board-buttons'>
-                <button className="confirm-button" onClick={deleteCollection}>CONFIRM</button>
+            {/* <div className='create-edit-board-buttons'> */}
+                <button className="confirm-button" onClick={deleteCollection}>DELETE</button>
                 <button className="cancel-button" onClick={cancelDelete}>CANCEL</button>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

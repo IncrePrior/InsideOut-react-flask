@@ -26,7 +26,7 @@ export default function DeletePost({ postId }) {
 
   return (
     <div className="delete-container">
-      <div className="h1">Confirm Delete</div>
+      <div className="h1">Are you sure?</div>
       {errors.error && (
         <p className="errors errors-ul">
           {errors.error}
