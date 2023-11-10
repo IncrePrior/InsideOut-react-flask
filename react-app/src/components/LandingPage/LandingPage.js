@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import SignupFormModal from '../SignupFormModal/SignupFormModal';
 import { login } from "../../store/session";
+import { getAllPostsThunk } from "../../store/post"
 import './LandingPage.css';
 
 
@@ -31,6 +32,7 @@ const closeMenu = () => setShowMenu(false);
 const handleDemoLogin = (e) => {
     e.preventDefault();
     return dispatch(login('demo@aa.io', 'password'))
+    .then(dispatch(getAllPostsThunk()))
     .then(history.push('/posts'))
     .then(closeModal);
 };

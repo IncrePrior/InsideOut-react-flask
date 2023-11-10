@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 import { SingleCollectionThunk , RemovePostFromCollectionThunk } from "../../store/collection"
 import "./RemovePostFromCollection.css";
 
-export default function RemovePostFromCollection({ postId }) {
+export default function RemovePostFromCollection({ postId, setRefresh }) {
 
     console.log("postId", postId)
 
@@ -13,7 +13,7 @@ export default function RemovePostFromCollection({ postId }) {
     const history = useHistory()
     const { closeModal } = useModal()
     const collection = useSelector(state => state.collections.singleCollection)
-    const [refresh, setRefresh] = useState('')
+
 
 
     useEffect(() => {
@@ -25,6 +25,7 @@ export default function RemovePostFromCollection({ postId }) {
     const removePost = async (e) => {
         e.preventDefault()
         await dispatch(RemovePostFromCollectionThunk(collection.id, postId))
+        setRefresh(collection.id)
 
         await history.push(`/collections/${collection.id}`)
         await closeModal()

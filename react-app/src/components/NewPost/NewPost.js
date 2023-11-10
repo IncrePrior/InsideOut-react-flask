@@ -22,7 +22,7 @@ export default function NewPost() {
 
   useEffect(() => {
     const frontendErrors = {};
-    if (!photo) frontendErrors.photo = "Photo is required.";
+    if (!photo) frontendErrors.images = "Photo is required.";
     if (!title) frontendErrors.title = "Title is required.";
     if (title.length > 60) frontendErrors.name = "Title can not be longer than 60";
     if (!text) frontendErrors.text = "Message is required.";

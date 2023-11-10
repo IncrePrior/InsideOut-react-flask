@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeletePost from "../DeletePost/DeletePost";
 import EditPost from "../EditPost/EditPost";
@@ -6,6 +7,7 @@ import NewPost from "../NewPost/NewPost";
 
 export default function PostUpdateButton({ user, postId }) {
   const [showMenu, setShowMenu] = useState(false);
+  const post = useSelector((state) => state.posts.singlePost);
   const ulRef = useRef();
 
   useEffect(() => {
@@ -25,6 +27,7 @@ export default function PostUpdateButton({ user, postId }) {
   return (
     <div className="post-update-dropdown" ref={ulRef}>
       <button
+        hidden={user.id !== post.userId}
         style={{ background: "transparent", border: "none", color: "#000" }}
         onClick={(e) => {
           e.stopPropagation();

@@ -4,6 +4,7 @@ from app.api.aws_helpers import upload_file_to_s3, remove_file_from_s3, get_uniq
 from .auth_routes import validation_errors_to_error_messages
 from app.models import db, Post, Comment, Photo, User, Comment
 from app.forms import PostForm, EditPostForm
+from icecream import ic
 
 
 
@@ -135,7 +136,6 @@ def edit_post(postId):
     Edit post.
     """
 
-    print("Inside edit_post route")
 
     form = EditPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -144,8 +144,10 @@ def edit_post(postId):
 
         post = Post.query.get(postId)
 
+
         post.title = form.data['title']
         post.text = form.data['text']
+        # post.photo = form.data['photo']
 
 
         db.session.commit()
