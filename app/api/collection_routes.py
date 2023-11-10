@@ -181,5 +181,9 @@ def removePostFromCollection(collectionId, postId):
     idx = collection.posts.index(post)
     collection.posts.pop(idx)
 
+    # postCollection = PostCollection.query.filter(PostCollection.collection_id.like(collectionId))
+
+
+
     db.session.commit()
     return collection.to_dict()
