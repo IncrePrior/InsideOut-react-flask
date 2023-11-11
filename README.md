@@ -11,12 +11,12 @@ For example, if you plan a kitchen renovation, create a Kitchen collection of ki
 
 # Technologies Used:
 
-Backend: Python, Flask, SQLAlchemy
-Frontend: React, Redux, Javascript, HTML, CSS
-Database: PostgreSQL
-Deployment: Docker
-Hosting: Render
-Photos hosting: AWS
+ - Backend: Python, Flask, SQLAlchemy
+ - Frontend: React, Redux, Javascript, HTML, CSS
+ - Database: PostgreSQL
+ - Deployment: Docker
+ - Hosting: Render
+ - Photos hosting: AWS
 
 # Landing Page 
 
