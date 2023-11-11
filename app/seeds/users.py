@@ -4,41 +4,8 @@ from datetime import datetime
 
 current_date = datetime.now()
 
-
-# Adds a demo user, you can add other users here if you want
-# def seed_users():
-#     demo_user = User.query.filter_by(username='Demo').first()
-#     if demo_user is None:
-#         users = [
-#         User(
-#         username='Demo',
-#         email='demo@aa.io',
-#         password='password',
-#         created_at=current_date,
-#         updated_at=current_date,
-#         ),
-#         User(
-#         username='magda',
-#         email='magda@gmail.com',
-#         password='password',
-#         created_at=current_date,
-#         updated_at=current_date,
-#         ),
-#         User(
-#         username='george',
-#         email='george@gmail.com',
-#         password='password',
-#         created_at=current_date,
-#         updated_at=current_date,
-#         )
-#     ]
-
-#     db.session.add_all(users)
-#     db.session.commit()
-#     return users
-
 def seed_users():
-    users = []  # Initialize an empty list
+    users = []  
     demo_user = User.query.filter_by(username='Demo').first()
     if demo_user is None:
         users = [
@@ -70,7 +37,7 @@ def seed_users():
     else:
         print("User 'Demo' already exists in the database.")
 
-    return users  
+    return users
 
 
 

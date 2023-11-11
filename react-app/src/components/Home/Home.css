@@ -1,27 +1,7 @@
 .main-home-container {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr
 }
-
-/* .main-home-container::before,
-.main-home-container::after {
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 2px;
-  border-left: 2px solid rgb(223, 222, 222);
-}
-
-.main-home-container::before {
-  left: 1fr;
-}
-
-.main-home-container::after {
-  left: 3fr;
-} */
-
-
-
 
 .Masonry {
   flex-direction: column;
@@ -33,9 +13,9 @@
   padding: 0 0;
   box-sizing: content-box;
   min-height: calc(100vh - 100px);
-  /* border-left: 2px solid rgb(223, 222, 222); */
-  /* border-right: 2px solid rgb(223, 222, 222); */
-  /* box-shadow: 1px 1px 10px rgb(223, 222, 222); */
+  /* border-left: 2px solid rgb(223, 222, 222);
+  border-right: 2px solid rgb(223, 222, 222);
+  box-shadow: 1px 1px 10px rgb(223, 222, 222); */
   /* z-index: 1; */
 }
 
