@@ -5,7 +5,7 @@ import Masonry from "react-masonry-css";
 import OpenModalButton from '../OpenModalButton/OpenModalButton'
 import SinglePost from '../Home/SinglePost';
 import { SingleCollectionThunk } from '../../store/collection';
-import { RemovePostFromCollectionThunk, AllCollectionsThunk } from '../../store/collection';
+import { AllCollectionsThunk } from '../../store/collection';
 import CollectionUpdateButton from './CollectionUpdateButton';
 import RemovePostFromCollection from '../RemovePostFromCollection/RemovePostFromCollection';
 import { NavLink } from "react-router-dom";
@@ -22,12 +22,12 @@ export default function CollectionDetails() {
     const collections = collectionsObj ? Object.values(collectionsObj) : [];
     const user = useSelector((state) => state.session.user);
     const user_collections = collections.filter(collections => collections.user_id === user.id);
-    const postsObj = useSelector(state => state.posts.allPosts)
     const loading = useSelector((state) => state.collections.loading);
     const [collectionPosts, setCollectionPosts] = useState([])
     const [showDropdown, setShowDropdown] = useState(false);
     const [refresh, setRefresh] = useState('')
     const history = useHistory()
+
 
 
     useEffect(async () => {
@@ -37,21 +37,6 @@ export default function CollectionDetails() {
             setRefresh("")
 
     }, [dispatch, collectionId, refresh ]);
-
-
-// useEffect(() => {
-//     if (showDropdown) return;
-
-//     const closeMenu = (e) => {
-//       if (!ulRef.current.contains(e.target)) {
-//         setShowDropdown(false);
-//       }
-//     };
-//     document.addEventListener("click", closeMenu);
-
-//     return () => document.removeEventListener("click", closeMenu);
-//   }, [showDropdown]);
-
 
 
     if (loading) {
@@ -70,13 +55,6 @@ const handleAddPostClick = () => {
 };
 
 
-
-// const handleRemovePost = async (postId) => {
-//     await dispatch(RemovePostFromCollectionThunk(collectionId, postId));
-//     const res = await dispatch(SingleCollectionThunk(collectionId));
-//     setCollectionPosts(res.posts);
-// };
-
 return (
     <div className='main-collection-details-container'>
         <div className='collection-details'>
@@ -86,8 +64,15 @@ return (
     </div>
 
     <div className='main-home-container1'>
-
         <div className='collection-dots-container'>
+
+        <p className='add-post1'>
+              <button id="link-add-post-button1" onClick={handleAddPostClick}>
+                  ADD POSTS TO COLLECTION
+              </button>
+            </p>
+
+
         <CollectionUpdateButton id="dots" user={user} collectionId={collection.id} />
 
         <div className="dropdown6">
@@ -96,7 +81,7 @@ return (
             style={{
                 background: 'transparent',
                 border: '1px solid transparent',
-                color: '#000',
+                color: 'rgb(60, 59, 59)',
                 cursor: 'pointer',
                 transition: 'color 0.3s',
               }}
@@ -104,7 +89,7 @@ return (
             onMouseOver={(e) => (e.target.style.color = 'aqua')}
             onMouseOut={(e) => (e.target.style.color = '#000')}
           >
-              YOUR COLLECTIONS
+              <span className='duza-kropka'> ● </span>YOUR COLLECTIONS
             </button>
             <div className="dropdown5">
             {showDropdown && (
@@ -123,8 +108,6 @@ return (
 
 
         <div className="image-grid">
-
-        {collectionPosts && collectionPosts.length > 0 ? (
         <Masonry
           breakpointCols={{ default: 4, 1100: 3, 800: 2, 500: 1 }}
           className="my-masonry-grid"
@@ -141,31 +124,6 @@ return (
             </div>
           ))}
         </Masonry>
-      ) : (
-        <div className='feedback-container'>
-              <p className='add-post'>
-              <button id="link-add-post-button" onClick={handleAddPostClick}>
-                  ADD POSTS TO THIS COLLECTION
-              </button>
-            </p>
-        </div>
-      )}
-                    {/* <Masonry
-                        breakpointCols={{ default: 4, 1100: 3, 800: 2, 500: 1 }}
-                        className="my-masonry-grid"
-                        columnClassName="my-masonry-grid_column"
-                    >
-                            {collectionPosts && collectionPosts.map((post) => (
-                                <div className="post-card-container"  key={post.id}>
-                                    <SinglePost post={post} photoUrl={post.photoUrl}/>
-
-                                    <OpenModalButton
-                                    className={"menu-text1"}
-                                    buttonText='remove'
-                                    modalComponent={<RemovePostFromCollection postId={post.id} setRefresh={setRefresh}/>} />
-                                </div>
-                            ))}
-                        </Masonry> */}
           </div>
     </div>
     </div>

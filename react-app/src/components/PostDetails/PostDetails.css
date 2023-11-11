@@ -145,6 +145,18 @@
 }
 
 
+/* .arrow-icon-left.disabled,
+.arrow-icon-right.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} */
+
+
+
+
+
+
+
 .post-dots-container {
   display: flex;
   flex-direction: row;

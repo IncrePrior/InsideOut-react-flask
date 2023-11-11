@@ -41,3 +41,6 @@ export default function DeletePost({ postId }) {
     </div>
   );
 }
+
+
+
