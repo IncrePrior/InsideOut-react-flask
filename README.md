@@ -23,7 +23,7 @@ Welcome to INSIDEOUT, the vibrant and dynamic full-stack web application that tr
  - Enjoy a user-friendly platform that empowers you to effortlessly create, update, and delete collections with just a few clicks.
 
 Whether you're a design maven or just getting started on your decor journey, INSIDEOUT is where your creativity takes center stage. 
-### Let your design dreams run wild!
+Let your design dreams run wild!
 
 # Technologies Used:
 
