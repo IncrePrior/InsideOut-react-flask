@@ -11,7 +11,7 @@ Welcome to INSIDEOUT, the vibrant and dynamic full-stack web application that tr
 ## Features:
 
 🌟 Inspiration Unleashed: 
-- INSIDEOUT is your gateway to a visual feast of stunning designs. Share and explore one-of-a-kind photos that serve as beacons of inspiration for your next project.
+ - INSIDEOUT is your gateway to a visual feast of stunning designs. Share and explore one-of-a-kind photos that serve as beacons of inspiration for your next project.
 
 💡 Limitless Creativity: 
 - Express your unique style by posting, updating, and deleting your own design inspirations. Every post is a canvas for your imagination.
