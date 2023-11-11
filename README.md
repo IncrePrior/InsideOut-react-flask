@@ -4,7 +4,7 @@ INSIDEOUT website: https://insideout-rq43.onrender.com/
 
 # Description
 
-## INSIDEOUT: Unleash Your Design Inspiration
+## INSIDEOUT: Endless Design Inspiration for Spaces Inside and Out:
 
 Welcome to INSIDEOUT, the vibrant and dynamic full-stack web application that transforms social media into a canvas for interior and garden design enthusiasts. Dive into a world where each post is a masterpiece, a singular photo that sparks creativity and showcases the essence of extraordinary design.
 
