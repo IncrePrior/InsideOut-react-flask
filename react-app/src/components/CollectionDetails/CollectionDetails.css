@@ -100,15 +100,15 @@ flex-direction: column;
 
 #link-add-post-button1 {
 
-    font-size: 14px;
+    font-size: 8px;
     text-decoration: none;
     background-color: rgb(30, 206, 206);
     font-size: 14px;
     border-radius: 10px;
     border: none;
     color: white;
-    height: 45px;
-    width: 250px;
+    height: 40px;
+    width: 220px;
     margin-top: 50px;
     margin-bottom: 0;
     margin-left: 20px;
@@ -194,7 +194,7 @@ flex-direction: column;
   .transparent-button {
     margin-top: 100px;
     color: rgb(60, 59, 59);
-    font-size: 16px;
+    font-size: 14px;
   }
 
 
