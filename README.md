@@ -14,13 +14,13 @@ Welcome to INSIDEOUT, the vibrant and dynamic full-stack web application that tr
  - INSIDEOUT is your gateway to a visual feast of stunning designs. Share and explore one-of-a-kind photos that serve as beacons of inspiration for your next project.
 
 💡 Limitless Creativity: 
-- Express your unique style by posting, updating, and deleting your own design inspirations. Every post is a canvas for your imagination.
+ - Express your unique style by posting, updating, and deleting your own design inspirations. Every post is a canvas for your imagination.
 
 🏡 Collections, Tailored to You: 
-- Take your interests to the next level by curating collections. Planning a kitchen renovation? Create a 'Kitchen Wonders' collection filled with jaw-dropping kitchen designs.
+ - Take your interests to the next level by curating collections. Planning a kitchen renovation? Create a 'Kitchen Wonders' collection filled with jaw-dropping kitchen designs.
 
 🚀 Seamless Experience: 
-- Enjoy a user-friendly platform that empowers you to effortlessly create, update, and delete collections with just a few clicks.
+ - Enjoy a user-friendly platform that empowers you to effortlessly create, update, and delete collections with just a few clicks.
 
 Whether you're a design maven or just getting started on your decor journey, INSIDEOUT is where your creativity takes center stage. Let your design dreams run wild!
 
