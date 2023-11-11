@@ -4,7 +4,7 @@ INSIDEOUT website: https://insideout-rq43.onrender.com/
 
 # Description
 
-INSIDEOUT is a full-stack web application for social media platform for interior and garden design lovers, where they can share photos of beautiful designs.
+INSIDEOUT is a full-stack web application for social media platform where interior and garden design lovers can share photos of beautiful designs.
 Every post has only one photo as an ispiration for something particular. Users can post, update, and delete own posts. 
 They can also create, update and delete collections of chosen photos as a interest in particular subject.
 For example, if you plan a kitchen renovation, create a Kitchen collection of kitchen photos you can use as inspiraton.
