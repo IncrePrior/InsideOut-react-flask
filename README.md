@@ -1,4 +1,4 @@
-## Welcome to INSIDEOUT!
+# Welcome to INSIDEOUT!
 
 INSIDEOUT website: https://insideout-rq43.onrender.com/
 
