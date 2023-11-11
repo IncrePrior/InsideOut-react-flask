@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import PostUpdateButton from "./PostUpdateButton";
 import { getSinglePostThunk, checkPreviousPost, checkNextPost } from "../../store/post";
 import AddPostToCollection from "../AddPostToCollection/AddPostToCollection";
+import { useModal } from "../../context/Modal";
 import "./PostDetails.css";
 
 
@@ -20,10 +21,12 @@ export default function PostDetails() {
   const [hasNext, setHasNext] = useState(true);
   const [nextId, setNextId] = useState(null);
   const [prevId, setPrevId] = useState(null);
-  const [errors, setErrors] = useState([]);
   const [photoUrl, setPhotoUrl] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+
+
+  const { closeModal } = useModal();
+
 
   useEffect(() => {
     dispatch(getSinglePostThunk(postId));
@@ -64,16 +67,19 @@ export default function PostDetails() {
 
   const goToPreviousPost = () => {
     if (prevId) {
+      closeModal();
       history.push(`/posts/${prevId}`);
     }
   };
 
-
   const goToNextPost = () => {
     if (nextId) {
+      closeModal();
       history.push(`/posts/${nextId}`);
     }
   };
+
+
 
   return (
     <div className="single-post-main">
@@ -161,9 +167,7 @@ export default function PostDetails() {
       {showMenu && (
           <AddPostToCollection
             post_id={post.id}
-            // collection_id={collection.id}
             onSelectCollection={(selectedCollection) => {
-              // Handle the selected collection if needed
               console.log(selectedCollection);
             }}
           />

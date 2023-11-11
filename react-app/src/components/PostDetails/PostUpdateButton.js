@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeletePost from "../DeletePost/DeletePost";
 import EditPost from "../EditPost/EditPost";
-import NewPost from "../NewPost/NewPost";
+
 
 export default function PostUpdateButton({ user, postId }) {
   const [showMenu, setShowMenu] = useState(false);

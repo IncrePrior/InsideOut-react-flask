@@ -19,6 +19,7 @@ export default function NewPost() {
   const [dragging, setDragging] = useState(false);
   const [uploadStatus, setUploadStatus] = useState("Drag and drop or");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const frontendErrors = {};
@@ -67,6 +68,7 @@ export default function NewPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+    setLoading(true)
 
     if (Object.keys(frontendErrors).length > 0) return;
 
@@ -83,9 +85,15 @@ export default function NewPost() {
     await dispatch(createSinglePostThunk(formData));
     await dispatch(getAllPostsThunk());
 
+    setLoading(false)
+
     closeModal();
     await history.push("/posts");
   };
+
+
+
+  const loadingClass = loading ? "is-loading" : "not-loading"
 
 
   return (
@@ -172,6 +180,7 @@ export default function NewPost() {
           </div>
         </div>
       </form>
+    <div className={loadingClass}>LOADING...</div>
     </div>
   );
 }

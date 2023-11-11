@@ -10,6 +10,7 @@ import PostDetails from "./components/PostDetails/PostDetails";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import CollectionDetails from "./components/CollectionDetails/CollectionDetails";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         </Switch>
       )}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -9,7 +9,6 @@ flex-direction: column;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: lightblue; */
     background-color: rgb(60, 59, 59);
     height: 200px;
 }
@@ -70,28 +69,70 @@ flex-direction: column;
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
+
 }
 
-.collection-dots-container {
-    /* border: 2px solid red; */
-    /* margin-top: 30px; */
-     /* border: 2px solid green; */
+.feedback-container {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#link-add-post-button {
+    font-size: 24px;
+    text-decoration: none;
+    background-color: rgb(30, 206, 206);
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    height: 70px;
+    width: 420px;
+}
+
+
+#link-add-post-button:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
+
+
+#link-add-post-button1 {
+
+    font-size: 14px;
+    text-decoration: none;
+    background-color: rgb(30, 206, 206);
+    font-size: 14px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    height: 45px;
+    width: 250px;
+    margin-top: 50px;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+
+
+#link-add-post-button1:hover {
+    cursor: pointer;
+    background-color: aqua;
+}
+
+.collection-dots-container {
+    display: flex;
+    flex-direction: column;
+    align-items: top;
     justify-content: center;
     padding: 0;
     height: 300px;
-
-
 }
 
 .collection-name {
     margin-top: 30px;
     color: white;
     font-size: 50px;
-    /* border: 2px solid green; */
-    /* margin-left: auto; */
 }
 
 .collection-description {
@@ -128,23 +169,19 @@ flex-direction: column;
 }
 
 #dots {
-margin-bottom: 300px;
+    margin-top: 0;
+    margin-bottom: 300px;
 /* margin-left: 100px; */
 }
 
 
 .post-dots-container1 {
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; */
-    /* padding-top: 0; */
-    /* margin-bottom: 70px; */
     height: 20px;
     font-size: 50px;
     color: rgb(166, 149, 157);
     margin-left: 20px;
     margin-right: 0;
+    margin-top: 10px;
     /* border: 2px solid red; */
   }
 
@@ -156,14 +193,9 @@ margin-bottom: 300px;
 
   .transparent-button {
     margin-top: 100px;
+    color: rgb(60, 59, 59);
+    font-size: 16px;
   }
-
-
-  /* .post-update-dropdown {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  } */
 
 
   .remove-post {
@@ -173,10 +205,9 @@ margin-bottom: 300px;
 
 
   .menu-text1 {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     font-style: oblique;
     margin: 0;
-    /* padding: 0; */
     border: none;
     background-color: transparent;
     width: 80px;
@@ -188,9 +219,11 @@ margin-bottom: 300px;
     cursor: pointer;
     background-color: rgb(30, 206, 206);
     color: white;
-
   }
 
-  /* .button.menu-text.menu-text1:hover {
-background-color: transparent;
-  } */
+  .duza-kropka {
+    /* color: rgb(30, 206, 206); */
+    color: rgb(3, 241, 209);
+    margin-right: 2px;
+    font-size: 24px;
+  }

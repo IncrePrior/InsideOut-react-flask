@@ -57,7 +57,7 @@ export default function Home() {
               onMouseOver={(e) => (e.target.style.color = 'aqua')}
               onMouseOut={(e) => (e.target.style.color = '#000')}
             >
-              YOUR COLLECTIONS
+              <span className='duza-kropka'> ● </span> YOUR COLLECTIONS
             </button>
             <div className="dropdown5">
             {showDropdown && (
